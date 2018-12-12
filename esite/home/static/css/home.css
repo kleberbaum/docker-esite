@@ -982,7 +982,7 @@ input#about-1:checked + .about-s .oculus .oculus-nav-dots label#about-dot-1, inp
   background-color: #2a2a2a; }
   .admins-s .members {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     min-height: calc(100vh - 320px);
     width: 100%; }
@@ -991,7 +991,7 @@ input#about-1:checked + .about-s .oculus .oculus-nav-dots label#about-dot-1, inp
       justify-content: space-around;
       align-items: center;
       width: 100%;
-      margin: 10px; }
+      margin: 30px; }
       .admins-s .members .mrow .member {
         flex: 0.1; }
         .admins-s .members .mrow .member .profile {
