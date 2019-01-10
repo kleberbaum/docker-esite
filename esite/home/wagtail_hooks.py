@@ -9,6 +9,7 @@ def register_strikethrough_feature(features):
     Registering the `strikethrough` feature, which uses the `STRIKETHROUGH` Draft.js inline style type,
     and is stored as HTML with an `<s>` tag.
     """
+    """
     feature_name = 'strikethrough'
     type_ = 'STRIKETHROUGH'
     tag = 's'
@@ -35,11 +36,11 @@ def register_strikethrough_feature(features):
 
     # 5. Call register_converter_rule to register the content transformation conversion.
     features.register_converter_rule('contentstate', feature_name, db_conversion)
-
+    """
 
     """
-    Registering the `strikethrough` feature, which uses the `STRIKETHROUGH` Draft.js inline style type,
-    and is stored as HTML with an `<s>` tag.
+    Registering the `underline` feature, which uses the `UNDERLINE` Draft.js inline style type,
+    and is stored as HTML with an `<u>` tag.
     """
     feature_name = 'underline'
     type_ = 'UNDERLINE'
