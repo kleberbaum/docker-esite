@@ -6,12 +6,6 @@ from esite.home import graphene_wagtail
 from esite.home.models import HomePage, Recipe
 from graphene.types.generic import GenericScalar
 
-class Query(graphene.AbstractType):
-    articles = graphene.List(ArticleNode)
-
-    @graphene.resolve_only_args
-    def resolve_articles(self):
-        return HomePage.objects.live()
 
 class RecipeNode(DjangoObjectType):
     class Meta:
@@ -53,3 +47,10 @@ class ArticleNode(DjangoObjectType):
             elif block_type == 'recipe':
                 repr_body.append(RecipeBlock(value=value))
         return repr_body
+
+class Query(graphene.AbstractType):
+    articles = graphene.List(ArticleNode)
+
+    @graphene.resolve_only_args
+    def resolve_articles(self):
+        return HomePage.objects.live()
