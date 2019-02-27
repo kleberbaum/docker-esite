@@ -12,7 +12,7 @@ from wagtail.snippets.blocks import SnippetChooserBlock
 @register_snippet
 class User(models.Model):
     name = models.CharField(max_length=255)
-    pic = models.ForeignKey(
+    image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
         blank=True,
@@ -37,7 +37,7 @@ class User(models.Model):
     ])
 
     panels = [
-        FieldPanel('title'),
+        FieldPanel('name'),
         ImageChooserPanel('image'),
         StreamFieldPanel('infos'),
         StreamFieldPanel('instructions'),        
