@@ -9,18 +9,6 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
 from wagtail.snippets.blocks import SnippetChooserBlock
 
-class BlogPage(Page):
-
-    body = StreamField([
-        ('heading', blocks.CharBlock(classname="full title")),
-        ('paragraph', blocks.RichTextBlock()),
-        ('recipe', SnippetChooserBlock(Recipe)), # Add this line
-    ])
-
-    content_panels = Page.content_panels + [
-        StreamFieldPanel('body'),
-    ]
-
 @register_snippet
 class Recipe(models.Model):
     title = models.CharField(max_length=255)
@@ -57,3 +45,15 @@ class Recipe(models.Model):
 
     def __str__(self):
         return self.title
+
+class BlogPage(Page):
+
+    body = StreamField([
+        ('heading', blocks.CharBlock(classname="full title")),
+        ('paragraph', blocks.RichTextBlock()),
+        ('recipe', SnippetChooserBlock(Recipe)), # Add this line
+    ])
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('body'),
+    ]
