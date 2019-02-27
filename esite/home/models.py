@@ -4,9 +4,10 @@ from wagtail.core.models import Page
 from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core import blocks
 from wagtail.admin.edit_handlers import TabbedInterface, ObjectList, InlinePanel, StreamFieldPanel, MultiFieldPanel, FieldPanel
-from wagtail.images.blocks import ImageChooserBlock, SnippetChooserBlock
+from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
+from wagtail.snippets.blocks import SnippetChooserBlock
 
 class BlogPage(Page):
 
