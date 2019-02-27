@@ -9,7 +9,6 @@ from graphene.types.generic import GenericScalar
 class ArticleNode(DjangoObjectType):
     class Meta:
         model = HomePage
-        only_fields = ['id', 'title', 'date', 'intro', 'body']
 
 
 class Query(graphene.AbstractType):
