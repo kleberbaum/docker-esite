@@ -51,7 +51,12 @@ class ArticleNode(DjangoObjectType):
 
 class Query(graphene.AbstractType):
     articles = graphene.List(ArticleNode)
+    test = graphene.List(ArticleNode)
 
     @graphene.resolve_only_args
     def resolve_articles(self):
+        return HomePage.objects.live()
+
+    @graphene.resolve_only_args
+    def resolve_test(self):
         return HomePage.objects.live()
