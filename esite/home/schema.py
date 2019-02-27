@@ -3,13 +3,14 @@ import graphene
 from django.db import models
 from graphene_django import DjangoObjectType
 from esite.home import graphene_wagtail
-from esite.home.models import HomePage, Recipe
+from esite.home.models import HomePage, User
 from graphene.types.generic import GenericScalar
 
 
-class RecipeNode(DjangoObjectType):
+
+class UserNode(DjangoObjectType):
     class Meta:
-        model = Recipe
+        model = User
 
 class ParagraphBlock(graphene.ObjectType):
     value = GenericScalar()
@@ -17,16 +18,16 @@ class ParagraphBlock(graphene.ObjectType):
 class HeadingBlock(graphene.ObjectType):
     value = GenericScalar()
 
-class RecipeBlock(graphene.ObjectType):
+class UserBlock(graphene.ObjectType):
     value = GenericScalar()
-    recipe = graphene.Field(RecipeNode)
+    user = graphene.Field(UserNode)
 
-    def resolve_recipe(self, info):
-        return Recipe.objects.get(id=self.value)
+    def resolve_user(self, info):
+        return User.objects.get(id=self.value)
 
 class HomePageBody(graphene.Union):
     class Meta:
-        types = (ParagraphBlock, HeadingBlock, RecipeBlock)
+        types = (ParagraphBlock, HeadingBlock, UserBlock)
 
 class ArticleNode(DjangoObjectType):
     body = graphene.List(HomePageBody)
@@ -44,8 +45,8 @@ class ArticleNode(DjangoObjectType):
                 repr_body.append(ParagraphBlock(value=value))
             elif block_type == 'heading':
                 repr_body.append(HeadingBlock(value=value))
-            elif block_type == 'recipe':
-                repr_body.append(RecipeBlock(value=value))
+            elif block_type == 'user':
+                repr_body.append(UserBlock(value=value))
         return repr_body
 
 class Query(graphene.AbstractType):

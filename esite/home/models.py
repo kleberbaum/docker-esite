@@ -10,30 +10,30 @@ from wagtail.snippets.models import register_snippet
 from wagtail.snippets.blocks import SnippetChooserBlock
 
 @register_snippet
-class Recipe(models.Model):
-    title = models.CharField(max_length=255)
-    image = models.ForeignKey(
+class User(models.Model):
+    name = models.CharField(max_length=255)
+    pic = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    ingredients = StreamField([
-        ('ingredient', blocks.StructBlock([
-            ('name', blocks.CharBlock()),
-            ('quantity', blocks.DecimalBlock()),
-            ('unit', blocks.ChoiceBlock(choices=[
+    infos = StreamField([
+        ('infos', blocks.StructBlock([
+            ('hauttyp', blocks.CharBlock()),
+            ('leiden', blocks.DecimalBlock()),
+            ('status', blocks.ChoiceBlock(choices=[
                 ('none', '(no unit)'),
-                ('g', 'Grams (g)'),
-                ('ml', 'Millilitre (ml)'),
-                ('tsp', 'Teaspoon (tsp.)'),
-                ('tbsp', 'Tablespoon (tbsp.)'),
+                ('Kunde', 'klein (>0)'),
+                ('Kunde', 'mittel (>5)'),
+                ('Kunde', 'groß (>10)'),
+                ('Stammkunde', 'stammkunde (>50)'),
             ]))
         ]))
     ])
     instructions = StreamField([
-        ('instruction', blocks.TextBlock()),
+        ('instruction', blocks.RichTextBlock()),
     ])
 
     panels = [
@@ -52,7 +52,7 @@ class HomePage(Page):
     body = StreamField([
         ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
-        ('recipe', SnippetChooserBlock(Recipe)), # Add this line
+        ('user', SnippetChooserBlock(User), icon='user'), # Add this line
     ])
 
     content_panels = Page.content_panels + [
