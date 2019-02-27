@@ -29,8 +29,13 @@ class HomePageBody(graphene.Union):
     class Meta:
         types = (ParagraphBlock, HeadingBlock, UserBlock)
 
+class TestPageBody(graphene.Union):
+    class Meta:
+        types = (ParagraphBlock, HeadingBlock, UserBlock)
+
 class ArticleNode(DjangoObjectType):
     body = graphene.List(HomePageBody)
+    test = graphene.List(TeastPageBody)
 
     class Meta:
         model = HomePage
@@ -51,12 +56,7 @@ class ArticleNode(DjangoObjectType):
 
 class Query(graphene.AbstractType):
     articles = graphene.List(ArticleNode)
-    test = graphene.List(ArticleNode)
 
     @graphene.resolve_only_args
     def resolve_articles(self):
-        return HomePage.objects.live()
-
-    @graphene.resolve_only_args
-    def resolve_test(self):
         return HomePage.objects.live()
