@@ -47,7 +47,8 @@ class Recipe(models.Model):
         return self.title
 
 class HomePage(Page):
-
+    date = models.DateField("Post date")
+    intro = models.CharField(max_length=250)
     body = StreamField([
         ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
@@ -55,5 +56,7 @@ class HomePage(Page):
     ])
 
     content_panels = Page.content_panels + [
+        FieldPanel('date'),
+        FieldPanel('intro'),
         StreamFieldPanel('body'),
     ]
