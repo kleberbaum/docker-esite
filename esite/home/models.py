@@ -46,7 +46,7 @@ class Recipe(models.Model):
     def __str__(self):
         return self.title
 
-class BlogPage(Page):
+class HomePage(Page):
 
     body = StreamField([
         ('heading', blocks.CharBlock(classname="full title")),
