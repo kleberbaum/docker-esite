@@ -5,6 +5,8 @@ from esite.home.models import HomePage
 
 from django.db import models
 
+from esite.home import graphene_wagtail
+
 class ArticleNode(DjangoObjectType):
     class Meta:
         model = HomePage
