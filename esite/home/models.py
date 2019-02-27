@@ -50,9 +50,9 @@ class HomePage(Page):
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
     body = StreamField([
-        ('heading', blocks.CharBlock(classname="full")),
+        ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
-        ('user', blocks.StreamBlock(User)), # Add this line
+        ('user', SnippetChooserBlock(User)), # Add this line
     ])
 
     content_panels = Page.content_panels + [
