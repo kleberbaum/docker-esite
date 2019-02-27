@@ -39,7 +39,7 @@ class User(models.Model):
     panels = [
         FieldPanel('title'),
         ImageChooserPanel('image'),
-        StreamFieldPanel('ingredients'),
+        StreamFieldPanel('infos'),
         StreamFieldPanel('instructions'),        
     ]
 
