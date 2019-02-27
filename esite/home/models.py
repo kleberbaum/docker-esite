@@ -50,7 +50,7 @@ class HomePage(Page):
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
     body = StreamField([
-        ('heading', blocks.CharBlock(classname="full title")),
+        ('heading', blocks.CharBlock(classname="full name")),
         ('paragraph', blocks.RichTextBlock()),
         ('user', StreamBlock(User)), # Add this line
     ])
