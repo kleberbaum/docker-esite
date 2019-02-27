@@ -6,11 +6,6 @@ from esite.home import graphene_wagtail
 from esite.home.models import HomePage, Recipe
 from graphene.types.generic import GenericScalar
 
-class ArticleNode(DjangoObjectType):
-    class Meta:
-        model = HomePage
-
-
 class Query(graphene.AbstractType):
     articles = graphene.List(ArticleNode)
 
@@ -22,13 +17,13 @@ class RecipeNode(DjangoObjectType):
     class Meta:
         model = Recipe
 
-class ParagraphBlock(graphene.AbstractType):
+class ParagraphBlock(graphene.ObjectType):
     value = GenericScalar()
 
-class HeadingBlock(graphene.AbstractType):
+class HeadingBlock(graphene.ObjectType):
     value = GenericScalar()
 
-class RecipeBlock(graphene.AbstractType):
+class RecipeBlock(graphene.ObjectType):
     value = GenericScalar()
     recipe = graphene.Field(RecipeNode)
 
