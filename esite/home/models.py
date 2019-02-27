@@ -44,7 +44,7 @@ class User(models.Model):
     ]
 
     def __str__(self):
-        return self.title
+        return self.name
 
 class HomePage(Page):
     date = models.DateField("Post date")
@@ -52,7 +52,7 @@ class HomePage(Page):
     body = StreamField([
         ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
-        ('user', SnippetChooserBlock(User)), # Add this line
+        ('user', StreamBlock(User)), # Add this line
     ])
 
     content_panels = Page.content_panels + [
