@@ -52,7 +52,7 @@ class HomePage(Page):
     body = StreamField([
         ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
-        ('user', SnippetChooserBlock(User), icon='user'), # Add this line
+        ('user', SnippetChooserBlock(User)), # Add this line
     ])
 
     content_panels = Page.content_panels + [
