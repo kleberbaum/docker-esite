@@ -35,7 +35,7 @@ class TestPageBody(graphene.Union):
 
 class ArticleNode(DjangoObjectType):
     body = graphene.List(HomePageBody)
-    test = graphene.List(TeastPageBody)
+    test = graphene.List(TestPageBody)
 
     class Meta:
         model = HomePage
