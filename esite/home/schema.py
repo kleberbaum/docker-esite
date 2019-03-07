@@ -37,13 +37,11 @@ class HomePageBody(graphene.Union):
     class Meta:
         types = (ParagraphBlock, HeadingBlock, UserBlock)
 
-class TestPageBody(graphene.Union):
-    class Meta:
-        types = (ParagraphBlock, HeadingBlock, UserBlock)
-
 class ArticleNode(DjangoObjectType):
     body = graphene.List(HomePageBody)
-    test = graphene.List(TestPageBody)
+    header = graphene.List(HomePageBody)
+    main = graphene.List(HomePageBody)
+    footer = graphene.List(HomePageBody)
 
     class Meta:
         model = HomePage

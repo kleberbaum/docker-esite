@@ -161,7 +161,7 @@ class HomePage(Page):
              ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
             ]))
           ], icon='cogs'))
-        ], icon='openquote')),
+        ], icon='site')),
         ('s_quotes', blocks.StructBlock([
           ('quotes', blocks.StreamBlock([
             ('slide', blocks.StructBlock([
@@ -173,7 +173,7 @@ class HomePage(Page):
               ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
             ]))
           ], icon='cogs'))
-        ], icon='form')),
+        ], icon='openquote')),
         ('s_reviews', blocks.StructBlock([
           ('reviews', blocks.StreamBlock([
             ('slide', blocks.StructBlock([
@@ -190,7 +190,7 @@ class HomePage(Page):
               ]))
             ], icon='doc-full'))
           ], icon='cogs'))
-        ], icon='grip')),
+        ], icon='form')),
         ('s_pricing', blocks.StructBlock([
           ('pricing', blocks.StreamBlock([
             ('slide', blocks.StructBlock([
@@ -207,7 +207,7 @@ class HomePage(Page):
               ]))
             ], icon='doc-full'))
           ], icon='cogs'))
-        ], icon='home')),
+        ], icon='grip')),
         ('s_about', blocks.StructBlock([
           ('about', blocks.StreamBlock([
             ('slide', blocks.StructBlock([
@@ -224,7 +224,7 @@ class HomePage(Page):
               ]))
             ], icon='doc-full'))
           ], icon='cogs'))
-        ], icon='placeholder'))
+        ], icon='home'))
       ])
 
     footer = StreamField([
