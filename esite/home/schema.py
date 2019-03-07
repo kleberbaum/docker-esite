@@ -37,9 +37,13 @@ class HomePageBody(graphene.Union):
     class Meta:
         types = (ParagraphBlock, HeadingBlock, UserBlock)
 
+class TestPageBody(graphene.Union):
+    class Meta:
+        types = (ParagraphBlock, HeadingBlock, UserBlock)
+
 class ArticleNode(DjangoObjectType):
     body = graphene.List(HomePageBody)
-    header = graphene.List(HomePageBody)
+    test = graphene.List(TestPageBody)
 
     class Meta:
         model = HomePage
@@ -61,9 +65,48 @@ class ArticleNode(DjangoObjectType):
     def resolve_header(self, info):
         repr_header = []
         for block in self.header.stream_data:
+            block_type = block.get('type')[0]
             value = block.get('value')
-            repr_header.append(HeadingBlock(value=value))
+            if block_type == 's':
+                repr_header.append(ParagraphBlock(value=value))
+            elif block_type == 'h':
+                repr_header.append(HeadingBlock(value=value))
+            elif block_type == 'f':
+                repr_header.append(HeadingBlock(value=value))
+            elif block_type == 'u':
+                repr_header.append(UserBlock(value=value))
         return repr_header
+
+    def resolve_main(self, info):
+        repr_main = []
+        for block in self.main.stream_data:
+            block_type = block.get('type')[0]
+            value = block.get('value')
+            if block_type == 's':
+                repr_main.append(ParagraphBlock(value=value))
+            elif block_type == 'h':
+                repr_main.append(HeadingBlock(value=value))
+            elif block_type == 'f':
+                repr_main.append(HeadingBlock(value=value))
+            elif block_type == 'u':
+                repr_main.append(UserBlock(value=value))
+        return repr_main
+
+    def resolve_footer(self, info):
+        repr_footer = []
+        for block in self.footer.stream_data:
+            block_type = block.get('type')[0]
+            value = block.get('value')
+            if block_type == 's':
+                repr_footer.append(ParagraphBlock(value=value))
+            elif block_type == 'h':
+                repr_footer.append(HeadingBlock(value=value))
+            elif block_type == 'f':
+                repr_footer.append(HeadingBlock(value=value))
+            elif block_type == 'u':
+                repr_footer.append(UserBlock(value=value))
+        return repr_footer
+
 
 # Query
 class Query(graphene.AbstractType):

@@ -67,8 +67,8 @@ class HomePage(Page):
     ])
 
     header = StreamField([
-        ('h_full', blocks.StructBlock([
-          ('heroitems', blocks.StreamBlock([
+        ('h_hero', blocks.StructBlock([
+          ('hero', blocks.StreamBlock([
             ('slide', blocks.StructBlock([
               ('img', ImageChooserBlock(required=False, classname="full")),
               ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
