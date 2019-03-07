@@ -175,6 +175,7 @@ class HomePage(Page):
       StreamFieldPanel('header'),
       StreamFieldPanel('main'),
       StreamFieldPanel('footer'),
+      StreamFieldPanel('body'),
     ]
 
     edit_handler = TabbedInterface([
