@@ -61,7 +61,7 @@ class HomePage(Page):
     ])
 
     main = StreamField([
-        ('why-us', blocks.RichTextBlock()),
+        ('why_us', blocks.RichTextBlock()),
         ('individual', blocks.RichTextBlock()),
         ('experts', blocks.RichTextBlock()),
         ('lab', blocks.RichTextBlock()),
@@ -69,7 +69,7 @@ class HomePage(Page):
         ('quotes', blocks.RichTextBlock()),
         ('reviews', SnippetChooserBlock(User)),
         ('pricing', blocks.RichTextBlock()),
-        ('about-us', blocks.RichTextBlock()),
+        ('about_us', blocks.RichTextBlock()),
     ])
 
     footer = StreamField([
