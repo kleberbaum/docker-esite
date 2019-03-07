@@ -77,7 +77,7 @@ class HomePage(Page):
                 ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
                 ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
               ])),
-              ('btn', blocks.StreamBlock([
+              ('btn', blocks.StructBlock([
                 ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
                 ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
               ]))
@@ -88,88 +88,78 @@ class HomePage(Page):
 
     main = StreamField([
         ('s_why', blocks.StructBlock([
-          ('why', blocks.StreamBlock([
-            ('slide', blocks.StructBlock([
+          ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
+          ('why', blocks.StructBlock([
+            ('collum_1', blocks.StructBlock([
               ('img', ImageChooserBlock(required=False, classname="full")),
-              ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
-              ('subhead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
-              ('btn', blocks.StreamBlock([
-                ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-                ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
-              ])),
-              ('btn', blocks.StreamBlock([
-                ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-                ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
-              ]))
-            ], icon='doc-full'))
+              ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
+            ], icon='cogs')),
+            ('collum_2', blocks.StructBlock([
+              ('img', ImageChooserBlock(required=False, classname="full")),
+              ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
+            ], icon='cogs')),
+            ('collum_3', blocks.StructBlock([
+              ('img', ImageChooserBlock(required=False, classname="full")),
+              ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
+            ], icon='cogs')),
+            ('btn', blocks.StructBlock([
+             ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
+             ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
+            ]))
           ], icon='cogs'))
         ], icon='radio-empty')),
         ('s_individual', blocks.StructBlock([
-          ('individual', blocks.StreamBlock([
-            ('slide', blocks.StructBlock([
-              ('img', ImageChooserBlock(required=False, classname="full")),
-              ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
-              ('subhead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
-              ('btn', blocks.StreamBlock([
-                ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-                ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
-              ])),
-              ('btn', blocks.StreamBlock([
-                ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-                ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
-              ]))
-            ], icon='doc-full'))
+          ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
+          ('individual', blocks.StructBlock([
+            ('img', ImageChooserBlock(required=False, classname="full")),
+            ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
           ], icon='cogs'))
         ], icon='radio-empty')),
         ('s_experts', blocks.StructBlock([
-          ('experts', blocks.StreamBlock([
-            ('slide', blocks.StructBlock([
-              ('img', ImageChooserBlock(required=False, classname="full")),
-              ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
-              ('subhead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
-              ('btn', blocks.StreamBlock([
-                ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-                ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
-              ])),
-              ('btn', blocks.StreamBlock([
-                ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-                ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
-              ]))
-            ], icon='doc-full'))
+          ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
+          ('experts', blocks.StructBlock([
+            ('img', ImageChooserBlock(required=False, classname="full")),
+            ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
           ], icon='cogs'))
         ], icon='radio-empty')),
         ('s_lab', blocks.StructBlock([
-          ('lab', blocks.StreamBlock([
-            ('slide', blocks.StructBlock([
-              ('img', ImageChooserBlock(required=False, classname="full")),
-              ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
-              ('subhead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
-              ('btn', blocks.StreamBlock([
-                ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-                ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
-              ])),
-              ('btn', blocks.StreamBlock([
-                ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-                ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
-              ]))
-            ], icon='doc-full'))
+          ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
+          ('lab', blocks.StructBlock([
+            ('img', ImageChooserBlock(required=False, classname="full")),
+            ('subhead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
+            ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
+          ], icon='cogs'))
+        ], icon='radio-empty')),
+        ('s_method', blocks.StructBlock([
+          ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
+          ('method', blocks.StructBlock([
+            ('img', ImageChooserBlock(required=False, classname="full")),
+            ('subhead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
+            ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
           ], icon='cogs'))
         ], icon='radio-empty')),
         ('s_method', blocks.StructBlock([
           ('method', blocks.StreamBlock([
-            ('slide', blocks.StructBlock([
+            ('sphere_1', blocks.StructBlock([
               ('img', ImageChooserBlock(required=False, classname="full")),
-              ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
-              ('subhead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
-              ('btn', blocks.StreamBlock([
-                ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-                ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
-              ])),
-              ('btn', blocks.StreamBlock([
-                ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-                ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
-              ]))
-            ], icon='doc-full'))
+              ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
+            ], icon='cogs')),
+            ('sphere_2', blocks.StructBlock([
+              ('img', ImageChooserBlock(required=False, classname="full")),
+              ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
+            ], icon='cogs')),
+            ('sphere_3', blocks.StructBlock([
+              ('img', ImageChooserBlock(required=False, classname="full")),
+              ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
+            ], icon='cogs')),
+            ('sphere_4', blocks.StructBlock([
+              ('img', ImageChooserBlock(required=False, classname="full")),
+              ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
+            ], icon='cogs')),
+            ('btn', blocks.StructBlock([
+             ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
+             ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
+            ]))
           ], icon='cogs'))
         ], icon='radio-empty')),
         ('s_quotes', blocks.StructBlock([
