@@ -165,18 +165,13 @@ class HomePage(Page):
         ('s_quotes', blocks.StructBlock([
           ('quotes', blocks.StreamBlock([
             ('slide', blocks.StructBlock([
-              ('img', ImageChooserBlock(required=False, classname="full")),
               ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
-              ('subhead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
-              ('btn', blocks.StreamBlock([
-                ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-                ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
-              ])),
-              ('btn', blocks.StreamBlock([
-                ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-                ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
-              ]))
-            ], icon='doc-full'))
+              ('quote', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
+            ], icon='doc-full')),
+            ('btn', blocks.StreamBlock([
+              ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
+              ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
+            ]))
           ], icon='cogs'))
         ], icon='radio-empty')),
         ('s_reviews', blocks.StructBlock([

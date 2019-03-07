@@ -37,13 +37,9 @@ class HomePageBody(graphene.Union):
     class Meta:
         types = (ParagraphBlock, HeadingBlock, UserBlock)
 
-class TestPageBody(graphene.Union):
-    class Meta:
-        types = (ParagraphBlock, HeadingBlock, UserBlock)
-
 class ArticleNode(DjangoObjectType):
     body = graphene.List(HomePageBody)
-    test = graphene.List(TestPageBody)
+    header = graphene.List(HomePageBody)
 
     class Meta:
         model = HomePage
@@ -62,7 +58,12 @@ class ArticleNode(DjangoObjectType):
                 repr_body.append(UserBlock(value=value))
         return repr_body
 
-
+    def resolve_header(self, info):
+        repr_header = []
+        for block in self.header.stream_data:
+            value = block.get('value')
+            repr_header.append(HeadingBlock(value=value))
+        return repr_header
 
 # Query
 class Query(graphene.AbstractType):
