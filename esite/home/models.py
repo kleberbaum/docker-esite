@@ -67,7 +67,7 @@ class HomePage(Page):
     ])
 
     header = StreamField([
-        ('h-full', blocks.StructBlock([
+        ('h_full', blocks.StructBlock([
           ('heroitems', blocks.StreamBlock([
             ('slide', blocks.StructBlock([
               ('img', ImageChooserBlock(required=False, classname="full")),
@@ -87,7 +87,7 @@ class HomePage(Page):
       ])
 
     main = StreamField([
-        ('s-why', blocks.StructBlock([
+        ('s_why', blocks.StructBlock([
           ('why', blocks.StreamBlock([
             ('slide', blocks.StructBlock([
               ('img', ImageChooserBlock(required=False, classname="full")),
@@ -104,7 +104,7 @@ class HomePage(Page):
             ], icon='doc-full'))
           ], icon='cogs'))
         ], icon='radio-empty')),
-        ('s-individual', blocks.StructBlock([
+        ('s_individual', blocks.StructBlock([
           ('individual', blocks.StreamBlock([
             ('slide', blocks.StructBlock([
               ('img', ImageChooserBlock(required=False, classname="full")),
@@ -121,7 +121,7 @@ class HomePage(Page):
             ], icon='doc-full'))
           ], icon='cogs'))
         ], icon='radio-empty')),
-        ('s-experts', blocks.StructBlock([
+        ('s_experts', blocks.StructBlock([
           ('experts', blocks.StreamBlock([
             ('slide', blocks.StructBlock([
               ('img', ImageChooserBlock(required=False, classname="full")),
@@ -138,7 +138,7 @@ class HomePage(Page):
             ], icon='doc-full'))
           ], icon='cogs'))
         ], icon='radio-empty')),
-        ('s-lab', blocks.StructBlock([
+        ('s_lab', blocks.StructBlock([
           ('lab', blocks.StreamBlock([
             ('slide', blocks.StructBlock([
               ('img', ImageChooserBlock(required=False, classname="full")),
@@ -155,7 +155,7 @@ class HomePage(Page):
             ], icon='doc-full'))
           ], icon='cogs'))
         ], icon='radio-empty')),
-        ('s-method', blocks.StructBlock([
+        ('s_method', blocks.StructBlock([
           ('method', blocks.StreamBlock([
             ('slide', blocks.StructBlock([
               ('img', ImageChooserBlock(required=False, classname="full")),
@@ -172,7 +172,7 @@ class HomePage(Page):
             ], icon='doc-full'))
           ], icon='cogs'))
         ], icon='radio-empty')),
-        ('s-quotes', blocks.StructBlock([
+        ('s_quotes', blocks.StructBlock([
           ('quotes', blocks.StreamBlock([
             ('slide', blocks.StructBlock([
               ('img', ImageChooserBlock(required=False, classname="full")),
@@ -189,7 +189,7 @@ class HomePage(Page):
             ], icon='doc-full'))
           ], icon='cogs'))
         ], icon='radio-empty')),
-        ('s-reviews', blocks.StructBlock([
+        ('s_reviews', blocks.StructBlock([
           ('reviews', blocks.StreamBlock([
             ('slide', blocks.StructBlock([
               ('img', ImageChooserBlock(required=False, classname="full")),
@@ -206,7 +206,7 @@ class HomePage(Page):
             ], icon='doc-full'))
           ], icon='cogs'))
         ], icon='radio-empty')),
-        ('s-pricing', blocks.StructBlock([
+        ('s_pricing', blocks.StructBlock([
           ('pricing', blocks.StreamBlock([
             ('slide', blocks.StructBlock([
               ('img', ImageChooserBlock(required=False, classname="full")),
@@ -223,7 +223,7 @@ class HomePage(Page):
             ], icon='doc-full'))
           ], icon='cogs'))
         ], icon='radio-empty')),
-        ('s-about', blocks.StructBlock([
+        ('s_about', blocks.StructBlock([
           ('about', blocks.StreamBlock([
             ('slide', blocks.StructBlock([
               ('img', ImageChooserBlock(required=False, classname="full")),
@@ -243,7 +243,7 @@ class HomePage(Page):
       ])
 
     footer = StreamField([
-        ('s-about', blocks.StructBlock([
+        ('f_about', blocks.StructBlock([
           ('about', blocks.StreamBlock([
             ('slide', blocks.StructBlock([
               ('img', ImageChooserBlock(required=False, classname="full")),
