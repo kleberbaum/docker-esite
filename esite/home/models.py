@@ -130,12 +130,6 @@ class HomePage(Page):
       ], icon='code'))
     ], blank=True)
 
-    header = StreamField([
-        ('heading', blocks.CharBlock(classname="full title")),
-        ('paragraph', blocks.RichTextBlock()),
-        ('user', SnippetChooserBlock(User)), # Add this line
-    ])
-
     body = StreamField([
         ('heading', blocks.StructBlock([
           ('about_pages', blocks.StreamBlock([
@@ -152,6 +146,26 @@ class HomePage(Page):
         ], icon='radio-empty')),
         ('paragraph', blocks.RichTextBlock()),
         ('user', SnippetChooserBlock(User)), # Add this line
+    ])
+
+    header = StreamField([
+        ('heading', blocks.StructBlock([
+          ('heroitems', blocks.StreamBlock([
+            ('slide', blocks.StructBlock([
+              ('img', ImageChooserBlock(required=False, classname="full")),
+              ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
+              ('subhead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
+              ('btn', blocks.StreamBlock([
+                ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
+                ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
+              ])),
+              ('btn', blocks.StreamBlock([
+                ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
+                ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
+              ]))
+            ], icon='doc-full'))
+          ], icon='cogs'))
+        ], icon='radio-empty'))
     ])
 
     main = StreamField([

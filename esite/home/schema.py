@@ -12,6 +12,10 @@ class UserNode(DjangoObjectType):
     class Meta:
         model = User
 
+
+
+
+# Blocks
 class ParagraphBlock(graphene.ObjectType):
     value = GenericScalar()
 
@@ -25,6 +29,10 @@ class UserBlock(graphene.ObjectType):
     def resolve_user(self, info):
         return User.objects.get(id=self.value)
 
+
+
+
+# Objects
 class HomePageBody(graphene.Union):
     class Meta:
         types = (ParagraphBlock, HeadingBlock, UserBlock)
@@ -54,6 +62,9 @@ class ArticleNode(DjangoObjectType):
                 repr_body.append(UserBlock(value=value))
         return repr_body
 
+
+
+# Query
 class Query(graphene.AbstractType):
     articles = graphene.List(ArticleNode)
 
