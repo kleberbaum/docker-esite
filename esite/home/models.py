@@ -205,10 +205,8 @@ class HomePage(Page):
               ('btn', blocks.StreamBlock([
                 ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
                 ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
-              ]))
-            ], icon='cogs')),
-          ], icon='cogs'))
-        ], icon='grip')),
+              ])),
+            ], icon='home')),
         ('s_about', blocks.StructBlock([
           ('about', blocks.StreamBlock([
             ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
