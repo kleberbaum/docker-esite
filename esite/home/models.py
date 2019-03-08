@@ -48,24 +48,6 @@ class User(models.Model):
 
 class HomePage(Page):
 
-    body = StreamField([
-        ('heading', blocks.StructBlock([
-          ('about_pages', blocks.StreamBlock([
-            ('about', blocks.StructBlock([
-              ('blink', blocks.CharBlock(blank=True, classname="full")),
-              ('use_image', blocks.BooleanBlock(default=False, help_text="Use picture instead of blink", required=False, classname="full")),
-              ('image', ImageChooserBlock(required=False, classname="full")),
-              ('boxes', blocks.StreamBlock([
-                ('title', blocks.CharBlock(blank=True, classname="full title", icon='title')),
-                ('content', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
-              ]))
-            ], icon='doc-full'))
-          ], icon='cogs')),
-        ], icon='image')),
-        ('paragraph', blocks.RichTextBlock()),
-        ('user', SnippetChooserBlock(User)), # Add this line
-    ])
-
     header = StreamField([
         ('h_hero', blocks.StructBlock([
           ('hero', blocks.StreamBlock([
@@ -204,6 +186,7 @@ class HomePage(Page):
                 ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
                 ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
               ]))
+            ])),
             ], icon='cogs')),
             ('card_2', blocks.StructBlock([
               ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
@@ -213,9 +196,10 @@ class HomePage(Page):
                 ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
                 ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
               ]))
+            ])),
             ], icon='cogs')),
             ('card_3', blocks.StructBlock([
-                            ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
+              ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
               ('subhead', blocks.CharBlock(blank=True, classname="full", icon='title')),
               ('price', blocks.CharBlock(blank=True, classname="full", icon='title')),
               ('btn', blocks.StreamBlock([
@@ -258,8 +242,7 @@ class HomePage(Page):
     main_content_panels = [
       StreamFieldPanel('header'),
       StreamFieldPanel('main'),
-      StreamFieldPanel('footer'),
-      StreamFieldPanel('body'),
+      StreamFieldPanel('footer')
     ]
  
     edit_handler = TabbedInterface([
