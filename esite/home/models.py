@@ -163,7 +163,7 @@ class HomePage(Page):
               ('img', ImageChooserBlock(required=False, classname="full")),
               ('quote', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
               ('name', blocks.CharBlock(blank=True, classname="full", icon='title')),
-              ('title', blocks.CharBlock(blank=True, classname="full", icon='title'))
+              ('title', blocks.CharBlock(blank=True, classname="full", icon='title')),
               ('btn', blocks.StreamBlock([
                 ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
                 ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
