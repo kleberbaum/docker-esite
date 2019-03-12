@@ -75,10 +75,12 @@ class HomePage(Page):
     copyrightholder = models.CharField(max_length=255)
 
     sociallinks = StreamField([
-      ('sociallink', blocks.StructBlock([
-        ('img', ImageChooserBlock(classname="full")),
-        ('link', blocks.CharBlock(classname="full"))
-      ], required=False, icon='doc-full'))
+      ('sociallinks', blocks.StreamBlock([
+        ('sociallink', blocks.StructBlock([
+          ('img', ImageChooserBlock(classname="full")),
+          ('link', blocks.CharBlock(classname="full"))
+        ] icon='doc-full'))
+      ], required=False))
     ])
 
     headers = StreamField([
@@ -242,13 +244,15 @@ class HomePage(Page):
         ], icon='placeholder'))
     ])
 
+    token = models.CharField(required=True, max_length=255)
+
     main_content_panels = [
       StreamFieldPanel('headers'),
       StreamFieldPanel('sections'),
       StreamFieldPanel('footers')
     ]
 
-    contact_info_panels = [
+    impressum_panels = [
       FieldPanel('city'),
       FieldPanel('zip_code'),
       FieldPanel('address'),
@@ -256,9 +260,13 @@ class HomePage(Page):
       FieldPanel('email'),
       FieldPanel('sociallinks')
     ]
+
+    token_panel = [
+      FieldPanel('token')
+    ]
  
     edit_handler = TabbedInterface([
       ObjectList(Page.content_panels + main_content_panels, heading='Main'),
       ObjectList(contact_info_panels, heading='Contact'),
-      ObjectList(Page.promote_panels + Page.settings_panels, heading='Settings', classname="settings")
+      ObjectList(Page.promote_panels + token_panel + Page.settings_panels, heading='Settings', classname="settings")
     ])
