@@ -76,9 +76,11 @@ class HomePage(Page):
         ('copyrightholder', blocks.CharBlock(classname="full"))
       ])),
       ('sociallinks', blocks.StreamBlock([
-        ('img', ImageChooserBlock(classname="full")),
-        ('link', blocks.CharBlock(classname="full"))
-      ], required=False, icon='doc-full'))
+        ('sociallinks', blocks.StreamBlock([
+          ('img', ImageChooserBlock(classname="full")),
+          ('link', blocks.CharBlock(classname="full"))
+        ], required=False, icon='doc-full'))
+      ], required=False))
     ])
     
     headers = StreamField([
@@ -243,7 +245,7 @@ class HomePage(Page):
     ])
 
     main_content_panels = [
-      StreamFieldPanel('infos'),
+      FieldPanel('infos'),
       StreamFieldPanel('headers'),
       StreamFieldPanel('sections'),
       StreamFieldPanel('footers')
