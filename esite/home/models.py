@@ -13,9 +13,9 @@ from wagtail.snippets.blocks import SnippetChooserBlock
 class Button(models.Model):
 
     _title = models.CharField(max_length=255)
-    _id = models.CharField(required=False, max_length=255)
-    _class = models.CharField(required=False, max_length=255)
-    _link = models.CharField(required=False, max_length=255)
+    _id = models.CharField(max_length=255)
+    _class = models.CharField(max_length=255)
+    _link = models.CharField(max_length=255)
     
     panels = [
       FieldPanel('_title'),
