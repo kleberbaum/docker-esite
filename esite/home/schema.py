@@ -7,12 +7,9 @@ from esite.home.models import HomePage, Button, User
 from graphene.types.generic import GenericScalar
 
 
-
 class UserNode(DjangoObjectType):
     class Meta:
         model = User
-
-
 
 
 # Blocks
@@ -38,8 +35,6 @@ class UserBlock(graphene.ObjectType):
 
     def resolve_user(self, info):
         return User.objects.get(id=self.value)
-
-
 
 
 # Objects
