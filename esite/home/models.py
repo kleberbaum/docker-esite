@@ -254,10 +254,7 @@ class HomePage(Page):
       ], icon='placeholder'))
     ])
 
-    token = StreamField([
-      ('use_token', blocks.BooleanBlock(default=False, help_text="Use a access token.", required=False, classname="full")),
-      ('token', blocks.CharBlock(blank=True, classname="full")),
-    ])
+    token = models.CharField(blank=True, max_length=255)
 
     main_content_panels = [
       StreamFieldPanel('headers'),
@@ -266,20 +263,26 @@ class HomePage(Page):
     ]
 
     imprint_panels = [
-      FieldPanel('city'),
-      FieldPanel('zip_code'),
-      FieldPanel('address'),
-      FieldPanel('telephone'),
-      FieldPanel('telefax'),
-      FieldPanel('vat_number'),
-      FieldPanel('tax_id'),
-      FieldPanel('trade_register_number'),
-      FieldPanel('court_of_registry'),
-      FieldPanel('place_of_registry'),
-      FieldPanel('trade_register_number'),
-      FieldPanel('ownership'),
-      FieldPanel('email'),
-      FieldPanel('sociallinks')
+        MultiFieldPanel(
+        [
+          FieldPanel('city'),
+          FieldPanel('zip_code'),
+          FieldPanel('address'),
+          FieldPanel('telephone'),
+          FieldPanel('telefax'),
+          FieldPanel('vat_number'),
+          FieldPanel('tax_id'),
+          FieldPanel('trade_register_number'),
+          FieldPanel('court_of_registry'),
+          FieldPanel('place_of_registry'),
+          FieldPanel('trade_register_number'),
+          FieldPanel('ownership'),
+          FieldPanel('email'),
+          FieldPanel('sociallinks')
+        ],
+        heading="Collection of Book Fields",
+        classname="collapsible collapsed"
+      )
     ]
 
     token_panel = [
