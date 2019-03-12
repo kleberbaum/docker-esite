@@ -94,6 +94,7 @@ class HomePage(Page):
           ('individual', blocks.StructBlock([
             ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
             ('img', ImageChooserBlock(required=False, classname="full")),
+            ('lead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
             ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
             ('btn', blocks.StructBlock([
               ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
@@ -105,6 +106,7 @@ class HomePage(Page):
           ('experts', blocks.StructBlock([
             ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
             ('img', ImageChooserBlock(required=False, classname="full")),
+            ('lead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
             ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
             ('btn', blocks.StructBlock([
               ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
@@ -116,7 +118,7 @@ class HomePage(Page):
           ('lab', blocks.StructBlock([
             ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
             ('img', ImageChooserBlock(required=False, classname="full")),
-            ('subhead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
+            ('lead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
             ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
             ('btn', blocks.StructBlock([
               ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
