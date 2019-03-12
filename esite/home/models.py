@@ -267,6 +267,6 @@ class HomePage(Page):
  
     edit_handler = TabbedInterface([
       ObjectList(Page.content_panels + main_content_panels, heading='Main'),
-      ObjectList(contact_info_panels, heading='Contact'),
+      ObjectList(impressum_panels, heading='Contact'),
       ObjectList(Page.promote_panels + token_panel + Page.settings_panels, heading='Settings', classname="settings")
     ])
