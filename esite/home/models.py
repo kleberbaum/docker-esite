@@ -250,12 +250,21 @@ class HomePage(Page):
       FieldPanel('email'),
       FieldPanel('sociallinks'),
       StreamFieldPanel('headers'),
-      StreamFieldPanel('headers'),
       StreamFieldPanel('sections'),
       StreamFieldPanel('footers')
+    ]
+
+    contact_info_panels = [
+      FieldPanel('city'),
+      FieldPanel('zip_code'),
+      FieldPanel('address'),
+      FieldPanel('phone'),
+      FieldPanel('email'),
+      FieldPanel('sociallinks')
     ]
  
     edit_handler = TabbedInterface([
       ObjectList(Page.content_panels + main_content_panels, heading='Main'),
+      ObjectList(contact_info_panels, heading='Contact'),
       ObjectList(Page.promote_panels + Page.settings_panels, heading='Settings', classname="settings")
     ])
