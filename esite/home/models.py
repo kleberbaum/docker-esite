@@ -87,7 +87,7 @@ class HomePage(Page):
     sociallinks = StreamField([
       ('sociallinks', blocks.StreamBlock([
         ('sociallink', blocks.StructBlock([
-          ('class', blocks.CharBlock(classname="full")),
+          ('icon', blocks.CharBlock(classname="full")),
           ('link', blocks.CharBlock(classname="full"))
         ], icon='doc-full'))
       ], required=False))
