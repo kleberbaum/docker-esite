@@ -25,7 +25,7 @@ class Button(models.Model):
     ]
 
     def __str__(self):
-      return self.name
+      return self._title
 
 @register_snippet
 class User(models.Model):
