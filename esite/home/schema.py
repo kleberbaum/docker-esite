@@ -49,7 +49,24 @@ class HomePageNode(DjangoObjectType):
 
     class Meta:
         model = HomePage
-        only_fields = ['id', 'title', 'city', 'zip_code', 'address', 'phone', 'email', 'sociallinks']
+        only_fields = [
+            'id',
+            'title',
+            'city',
+            'zip_code',
+            'address',
+            'telephone',
+            'telefax',
+            'vat_number',
+            'tax_id',
+            'trade_register_number',
+            'court_of_registry',
+            'place_of_registry',
+            'trade_register_number',
+            'ownership',
+            'email',
+            'sociallinks'
+        ]
 
     def resolve_headers(self, info):
         repr_headers = []

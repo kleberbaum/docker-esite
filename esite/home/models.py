@@ -66,12 +66,22 @@ class User(models.Model):
         return self.name
 
 class HomePage(Page):
-
+  
     city = models.CharField(max_length=255)
     zip_code = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
-    phone = models.CharField(max_length=255)
+    telephone = models.CharField(max_length=255)
+    telefax = models.CharField(max_length=255)
+    vat_number = models.CharField(max_length=255)
+    tax_id = models.CharField(max_length=255)
+    trade_register_number = models.CharField(max_length=255)
+    court_of_registry = models.CharField(max_length=255)
+    place_of_registry = models.CharField(max_length=255)
+    trade_register_number = models.CharField(max_length=255)
+    ownership = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
+    sociallinks = models.CharField(max_length=255)
+
     copyrightholder = models.CharField(max_length=255)
 
     sociallinks = StreamField([
@@ -237,14 +247,17 @@ class HomePage(Page):
       ])
 
     footers = StreamField([
-        ('f_info', blocks.StructBlock([
-          ('info', blocks.StructBlock([
-            ('placeholder', blocks.CharBlock(blank=True, classname="full", icon='title'))
-          ]))
-        ], icon='placeholder'))
+      ('f_info', blocks.StructBlock([
+        ('info', blocks.StructBlock([
+          ('placeholder', blocks.CharBlock(blank=True, classname="full", icon='title'))
+        ]))
+      ], icon='placeholder'))
     ])
 
-    token = models.CharField(blank=True, max_length=255)
+    token = StreamField([
+      ('use_token', blocks.BooleanBlock(default=False, help_text="Use a access token.", required=False, classname="full")),
+      ('token', blocks.CharBlock(blank=True, classname="full")),
+    ])
 
     main_content_panels = [
       StreamFieldPanel('headers'),
@@ -252,11 +265,19 @@ class HomePage(Page):
       StreamFieldPanel('footers')
     ]
 
-    impressum_panels = [
+    imprint_panels = [
       FieldPanel('city'),
       FieldPanel('zip_code'),
       FieldPanel('address'),
-      FieldPanel('phone'),
+      FieldPanel('telephone'),
+      FieldPanel('telefax'),
+      FieldPanel('vat_number'),
+      FieldPanel('tax_id'),
+      FieldPanel('trade_register_number'),
+      FieldPanel('court_of_registry'),
+      FieldPanel('place_of_registry'),
+      FieldPanel('trade_register_number'),
+      FieldPanel('ownership'),
       FieldPanel('email'),
       FieldPanel('sociallinks')
     ]
