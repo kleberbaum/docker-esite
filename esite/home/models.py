@@ -11,15 +11,17 @@ from wagtail.snippets.blocks import SnippetChooserBlock
 
 @register_snippet
 class Button(models.Model):
-    button = StreamField([
-      ('title', blocks.CharBlock(blank=True, classname="full", icon='title')),
-      ('id', blocks.CharBlock(blank=True, classname="full", icon='title')),
-      ('class', blocks.CharBlock(blank=True, classname="full", icon='title')),
-      ('link', blocks.CharBlock(blank=True, classname="full", icon='title'))
-    ])
 
+    _title = models.CharField(max_length=255)
+    _id = models.CharField(required=False, max_length=255)
+    _class = models.CharField(required=False, max_length=255)
+    _link = models.CharField(required=False, max_length=255)
+    
     panels = [
-      FieldPanel('button')   
+      FieldPanel('_title'),
+      FieldPanel('_id'),
+      FieldPanel('_class'),
+      FieldPanel('_link'),   
     ]
 
     def __str__(self):
