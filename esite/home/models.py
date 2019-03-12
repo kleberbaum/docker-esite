@@ -79,7 +79,7 @@ class HomePage(Page):
         ('sociallink', blocks.StructBlock([
           ('img', ImageChooserBlock(classname="full")),
           ('link', blocks.CharBlock(classname="full"))
-        ] icon='doc-full'))
+        ], icon='doc-full'))
       ], required=False))
     ])
 
