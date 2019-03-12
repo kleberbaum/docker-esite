@@ -68,19 +68,14 @@ class HomePageNode(DjangoObjectType):
             'sociallinks'
         ]
 
+    
     def resolve_headers(self, info):
         repr_headers = []
         for block in self.headers.stream_data:
             block_type = block.get('type')[0]
             value = block.get('value')
-            if block_type == 's':
-                repr_headers.append(SectionBlock(value=value))
-            elif block_type == 'h':
+            if block_type == 'h':
                 repr_headers.append(HeaderBlock(value=value))
-            elif block_type == 'f':
-                repr_headers.append(FooterBlock(value=value))
-            elif block_type == 'u':
-                repr_headers.append(UserBlock(value=value))
         return repr_headers
 
     def resolve_sections(self, info):
@@ -90,14 +85,6 @@ class HomePageNode(DjangoObjectType):
             value = block.get('value')
             if block_type == 's':
                 repr_sections.append(SectionBlock(value=value))
-            elif block_type == 'h':
-                repr_sections.append(HeaderBlock(value=value))
-            elif block_type == 'f':
-                repr_sections.append(FooterBlock(value=value))
-            elif block_type == 'b':
-                repr_sections.append(ButtonBlock(value=value))
-            elif block_type == 'u':
-                repr_sections.append(UserBlock(value=value))
         return repr_sections
 
     def resolve_footers(self, info):
@@ -105,16 +92,8 @@ class HomePageNode(DjangoObjectType):
         for block in self.footers.stream_data:
             block_type = block.get('type')[0]
             value = block.get('value')
-            if block_type == 's':
-                repr_footers.append(SectionBlock(value=value))
-            elif block_type == 'h':
-                repr_footers.append(HeaderBlock(value=value))
-            elif block_type == 'f':
+            if block_type == 'f':
                 repr_footers.append(FooterBlock(value=value))
-            elif block_type == 'b':
-                repr_sections.append(ButtonBlock(value=value))
-            elif block_type == 'u':
-                repr_footers.append(UserBlock(value=value))
         return repr_footers
 
 
