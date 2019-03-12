@@ -71,14 +71,14 @@ class HomePage(Page):
     zip_code = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
     telephone = models.CharField(max_length=255)
-    telefax = models.CharField(max_length=255)
-    vat_number = models.CharField(max_length=255)
-    tax_id = models.CharField(max_length=255)
-    trade_register_number = models.CharField(max_length=255)
-    court_of_registry = models.CharField(max_length=255)
-    place_of_registry = models.CharField(max_length=255)
-    trade_register_number = models.CharField(max_length=255)
-    ownership = models.CharField(max_length=255)
+    telefax = models.CharField(blank=True, max_length=255)
+    vat_number = models.CharField(blank=True, max_length=255)
+    tax_id = models.CharField(blank=True, max_length=255)
+    trade_register_number = models.CharField(blank=True, max_length=255)
+    court_of_registry = models.CharField(blank=True, max_length=255)
+    place_of_registry = models.CharField(blank=True, max_length=255)
+    trade_register_number = models.CharField(blank=True, max_length=255)
+    ownership = models.CharField(blank=True, max_length=255)
     email = models.CharField(max_length=255)
     sociallinks = models.CharField(max_length=255)
 
@@ -270,19 +270,25 @@ class HomePage(Page):
           FieldPanel('address'),
           FieldPanel('telephone'),
           FieldPanel('telefax'),
+          FieldPanel('email')
+        ],
+        heading="contact",
+        classname="collapsible collapsed"
+      ),
+      MultiFieldPanel(
+        [
           FieldPanel('vat_number'),
           FieldPanel('tax_id'),
           FieldPanel('trade_register_number'),
           FieldPanel('court_of_registry'),
           FieldPanel('place_of_registry'),
           FieldPanel('trade_register_number'),
-          FieldPanel('ownership'),
-          FieldPanel('email'),
-          FieldPanel('sociallinks')
+          FieldPanel('ownership')
         ],
-        heading="Collection of Book Fields",
+        heading="legal",
         classname="collapsible collapsed"
-      )
+      ),
+      FieldPanel('sociallinks')
     ]
 
     token_panel = [
@@ -291,6 +297,6 @@ class HomePage(Page):
  
     edit_handler = TabbedInterface([
       ObjectList(Page.content_panels + main_content_panels, heading='Main'),
-      ObjectList(imprint_panels, heading='Contact'),
+      ObjectList(imprint_panels, heading='Imprint'),
       ObjectList(Page.promote_panels + token_panel + Page.settings_panels, heading='Settings', classname="settings")
     ])
