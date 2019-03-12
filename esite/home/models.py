@@ -243,6 +243,7 @@ class HomePage(Page):
     ])
 
     main_content_panels = [
+      StreamFieldPanel('infos'),
       StreamFieldPanel('headers'),
       StreamFieldPanel('sections'),
       StreamFieldPanel('footers')
