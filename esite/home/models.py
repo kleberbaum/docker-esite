@@ -76,7 +76,7 @@ class HomePage(Page):
         ('copyrightholder', blocks.CharBlock(classname="full"))
       ])),
       ('sociallinks', blocks.StreamBlock([
-        ('img', ImageChooserBlock(classname="full"))
+        ('img', ImageChooserBlock(classname="full")),
         ('link', blocks.CharBlock(classname="full"))
       ], required=False, icon='doc-full'))
     ])
