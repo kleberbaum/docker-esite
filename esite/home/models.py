@@ -270,7 +270,8 @@ class HomePage(Page):
           FieldPanel('address'),
           FieldPanel('telephone'),
           FieldPanel('telefax'),
-          FieldPanel('email')
+          FieldPanel('email'),
+          FieldPanel('copyrightholder')
         ],
         heading="contact",
         classname="collapsible collapsed"
