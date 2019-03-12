@@ -243,12 +243,6 @@ class HomePage(Page):
     ])
 
     main_content_panels = [
-      FieldPanel('city'),
-      FieldPanel('zip_code'),
-      FieldPanel('address'),
-      FieldPanel('phone'),
-      FieldPanel('email'),
-      FieldPanel('sociallinks'),
       StreamFieldPanel('headers'),
       StreamFieldPanel('sections'),
       StreamFieldPanel('footers')
