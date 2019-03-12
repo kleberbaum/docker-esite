@@ -16,10 +16,13 @@ class UserNode(DjangoObjectType):
 
 
 # Blocks
-class ParagraphBlock(graphene.ObjectType):
+class HeaderBlock(graphene.ObjectType):
     value = GenericScalar()
 
-class HeadingBlock(graphene.ObjectType):
+class SectionBlock(graphene.ObjectType):
+    value = GenericScalar()
+
+class FooterBlock(graphene.ObjectType):
     value = GenericScalar()
 
 class UserBlock(graphene.ObjectType):
@@ -35,81 +38,67 @@ class UserBlock(graphene.ObjectType):
 # Objects
 class HomePageBody(graphene.Union):
     class Meta:
-        types = (ParagraphBlock, HeadingBlock, UserBlock)
+        types = (HeaderBlock, SectionBlock, FooterBlock,UserBlock)
 
-class ArticleNode(DjangoObjectType):
-    body = graphene.List(HomePageBody)
-    header = graphene.List(HomePageBody)
-    main = graphene.List(HomePageBody)
-    footer = graphene.List(HomePageBody)
+class HomePageNode(DjangoObjectType):
+    headers = graphene.List(HomePageBody)
+    sections = graphene.List(HomePageBody)
+    footers = graphene.List(HomePageBody)
 
     class Meta:
         model = HomePage
         only_fields = ['id', 'title', 'date', 'intro']
 
-    def resolve_body(self, info):
-        repr_body = []
-        for block in self.body.stream_data:
-            block_type = block.get('type')
-            value = block.get('value')
-            if block_type == 'paragraph':
-                repr_body.append(ParagraphBlock(value=value))
-            elif block_type == 'heading':
-                repr_body.append(HeadingBlock(value=value))
-            elif block_type == 'user':
-                repr_body.append(UserBlock(value=value))
-        return repr_body
-
-    def resolve_header(self, info):
-        repr_header = []
-        for block in self.header.stream_data:
+    def resolve_headers(self, info):
+        repr_headers = []
+        for block in self.headers.stream_data:
             block_type = block.get('type')[0]
             value = block.get('value')
             if block_type == 's':
-                repr_header.append(ParagraphBlock(value=value))
+                repr_headers.append(SectionBlock(value=value))
             elif block_type == 'h':
-                repr_header.append(HeadingBlock(value=value))
+                repr_headers.append(HeaderBlock(value=value))
             elif block_type == 'f':
-                repr_header.append(HeadingBlock(value=value))
+                repr_headers.append(FooterBlock(value=value))
             elif block_type == 'u':
-                repr_header.append(UserBlock(value=value))
-        return repr_header
+                repr_headers.append(UserBlock(value=value))
+        return repr_headers
 
-    def resolve_main(self, info):
-        repr_main = []
-        for block in self.main.stream_data:
+    def resolve_sections(self, info):
+        repr_sections = []
+        for block in self.sections.stream_data:
             block_type = block.get('type')[0]
             value = block.get('value')
             if block_type == 's':
-                repr_main.append(ParagraphBlock(value=value))
+                repr_sections.append(SectionBlock(value=value))
             elif block_type == 'h':
-                repr_main.append(HeadingBlock(value=value))
+                repr_sections.append(HeaderBlock(value=value))
             elif block_type == 'f':
-                repr_main.append(HeadingBlock(value=value))
+                repr_sections.append(FooterBlock(value=value))
             elif block_type == 'u':
-                repr_main.append(UserBlock(value=value))
-        return repr_main
+                repr_sections.append(UserBlock(value=value))
+        return repr_sections
 
-    def resolve_footer(self, info):
-        repr_footer = []
-        for block in self.footer.stream_data:
+    def resolve_footers(self, info):
+        repr_footers = []
+        for block in self.footers.stream_data:
             block_type = block.get('type')[0]
             value = block.get('value')
             if block_type == 's':
-                repr_footer.append(ParagraphBlock(value=value))
+                repr_footers.append(SectionBlock(value=value))
             elif block_type == 'h':
-                repr_footer.append(HeadingBlock(value=value))
+                repr_footers.append(HeaderBlock(value=value))
             elif block_type == 'f':
-                repr_footer.append(HeadingBlock(value=value))
+                repr_footers.append(FooterBlock(value=value))
             elif block_type == 'u':
-                repr_footer.append(UserBlock(value=value))
-        return repr_footer
+                repr_footers.append(UserBlock(value=value))
+        return repr_footers
 
 
 # Query
 class Query(graphene.AbstractType):
-    articles = graphene.List(ArticleNode)
+    homepage = graphene.List(HomePageNode)
 
     @graphene.resolve_only_args
-    def resolve_articles(self):
+    def resolve_homepage(self):
         return HomePage.objects.live()

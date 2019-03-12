@@ -48,7 +48,7 @@ class User(models.Model):
 
 class HomePage(Page):
 
-    header = StreamField([
+    headers = StreamField([
         ('h_hero', blocks.StructBlock([
           ('hero', blocks.StreamBlock([
             ('slide', blocks.StructBlock([
@@ -68,7 +68,7 @@ class HomePage(Page):
         ], icon='image')),
       ])
 
-    main = StreamField([
+    sections = StreamField([
         ('s_why', blocks.StructBlock([
           ('why', blocks.StructBlock([
             ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
@@ -214,30 +214,18 @@ class HomePage(Page):
         ], icon='home'))
       ])
 
-    footer = StreamField([
-        ('f_about', blocks.StructBlock([
-          ('about', blocks.StreamBlock([
-            ('slide', blocks.StructBlock([
-              ('img', ImageChooserBlock(required=False, classname="full")),
-              ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
-              ('subhead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
-              ('btn', blocks.StreamBlock([
-                ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-                ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
-              ])),
-              ('btn', blocks.StreamBlock([
-                ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-                ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
-              ]))
-            ], icon='doc-full'))
-          ], icon='cogs'))
+    footers = StreamField([
+        ('f_info', blocks.StructBlock([
+          ('info', blocks.StructBlock([
+            ('placeholder', blocks.CharBlock(blank=True, classname="full", icon='title'))
+          ]))
         ], icon='placeholder'))
     ])
 
     main_content_panels = [
-      StreamFieldPanel('header'),
-      StreamFieldPanel('main'),
-      StreamFieldPanel('footer')
+      StreamFieldPanel('headers'),
+      StreamFieldPanel('sections'),
+      StreamFieldPanel('footers')
     ]
  
     edit_handler = TabbedInterface([
