@@ -67,24 +67,20 @@ class User(models.Model):
 
 class HomePage(Page):
 
-    infos = StreamField([
-      ('logo', ImageChooserBlock(classname="full")),
-      ('companyinfos', blocks.StructBlock([
-        ('city', blocks.CharBlock(classname="full")),
-        ('zip', blocks.DecimalBlock(classname="full")),
-        ('address', blocks.CharBlock(classname="full")),
-        ('phone', blocks.CharBlock(classname="full")),
-        ('email', blocks.CharBlock(classname="full")),
-        ('copyrightholder', blocks.CharBlock(classname="full"))
-      ])),
-      ('sociallinks', blocks.StreamBlock([
-        ('sociallinks', blocks.StreamBlock([
-          ('img', ImageChooserBlock(classname="full")),
-          ('link', blocks.CharBlock(classname="full"))
-        ], required=False, icon='doc-full'))
-      ], required=False))
+    city = models.CharField(max_length=255)
+    zip_code = models.CharField(max_length=255)
+    address = models.CharField(max_length=255)
+    phone = models.CharField(max_length=255)
+    email = models.CharField(max_length=255)
+    copyrightholder = models.CharField(max_length=255)
+
+    sociallinks = StreamField([
+      ('sociallink', blocks.StructBlock([
+        ('img', ImageChooserBlock(classname="full")),
+        ('link', blocks.CharBlock(classname="full"))
+      ], required=False, icon='doc-full'))
     ])
-    
+
     headers = StreamField([
         ('h_hero', blocks.StructBlock([
           ('hero', blocks.StreamBlock([
@@ -247,7 +243,13 @@ class HomePage(Page):
     ])
 
     main_content_panels = [
-      FieldPanel('infos'),
+      FieldPanel('city'),
+      FieldPanel('zip_code'),
+      FieldPanel('address'),
+      FieldPanel('phone'),
+      FieldPanel('email'),
+      FieldPanel('sociallinks'),
+      StreamFieldPanel('headers'),
       StreamFieldPanel('headers'),
       StreamFieldPanel('sections'),
       StreamFieldPanel('footers')
