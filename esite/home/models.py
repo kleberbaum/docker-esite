@@ -191,7 +191,8 @@ class HomePage(Page):
         ('s_pricing', blocks.StructBlock([
           ('pricing', blocks.StructBlock([
             ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
-            ('card', blocks.StreamBlock([
+            ('cards', blocks.StreamBlock([
+              ('card', blocks.StreamBlock([
               ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
               ('subhead', blocks.CharBlock(blank=True, classname="full", icon='title')),
               ('price', blocks.CharBlock(blank=True, classname="full", icon='title')),
@@ -199,6 +200,7 @@ class HomePage(Page):
                 ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
                 ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
               ]))
+            ]))
             ]))
           ]))
         ], icon='home')),
