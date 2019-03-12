@@ -10,6 +10,22 @@ from wagtail.snippets.models import register_snippet
 from wagtail.snippets.blocks import SnippetChooserBlock
 
 @register_snippet
+class Button(models.Model):
+    button = StreamField([
+      ('title', blocks.CharBlock(blank=True, classname="full", icon='title')),
+      ('id', blocks.CharBlock(blank=True, classname="full", icon='title')),
+      ('class', blocks.CharBlock(blank=True, classname="full", icon='title')),
+      ('link', blocks.CharBlock(blank=True, classname="full", icon='title'))
+    ])
+
+    panels = [
+      FieldPanel('button')   
+    ]
+
+    def __str__(self):
+      return self.name
+
+@register_snippet
 class User(models.Model):
     name = models.CharField(max_length=255)
     image = models.ForeignKey(
@@ -32,6 +48,7 @@ class User(models.Model):
             ]))
         ]))
     ])
+    
     instructions = StreamField([
         ('instruction', blocks.RichTextBlock()),
     ])
@@ -48,6 +65,22 @@ class User(models.Model):
 
 class HomePage(Page):
 
+    infos = StreamField([
+      ('logo', ImageChooserBlock(classname="full")),
+      ('companyinfos', blocks.StructBlock([
+        ('city', blocks.CharBlock(classname="full")),
+        ('zip', blocks.DecimalBlock(classname="full")),
+        ('address', blocks.CharBlock(classname="full")),
+        ('phone', blocks.CharBlock(classname="full")),
+        ('email', blocks.CharBlock(classname="full")),
+        ('copyrightholder', blocks.CharBlock(classname="full"))
+      ])),
+      ('sociallinks', blocks.StreamBlock([
+        ('img', ImageChooserBlock(classname="full"))
+        ('link', blocks.CharBlock(classname="full"))
+      ], required=False, icon='doc-full'))
+    ])
+    
     headers = StreamField([
         ('h_hero', blocks.StructBlock([
           ('hero', blocks.StreamBlock([
@@ -55,13 +88,8 @@ class HomePage(Page):
               ('img', ImageChooserBlock(required=False, classname="full")),
               ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
               ('subhead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
-              ('btn', blocks.StreamBlock([
-                ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-                ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
-              ])),
-              ('btn', blocks.StructBlock([
-                ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-                ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
+              ('button', blocks.StructBlock([
+                ('btn', SnippetChooserBlock(Button))
               ]))
             ], icon='doc-full'))
           ], icon='cogs'))
@@ -84,9 +112,8 @@ class HomePage(Page):
               ('img', ImageChooserBlock(required=False, classname="full")),
               ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
             ], icon='cogs')),
-            ('btn', blocks.StructBlock([
-             ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-             ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
+            ('button', blocks.StructBlock([
+              ('btn', SnippetChooserBlock(Button))
             ]))
           ], icon='cogs'))
         ], icon='group')),
@@ -96,9 +123,8 @@ class HomePage(Page):
             ('img', ImageChooserBlock(required=False, classname="full")),
             ('lead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
             ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
-            ('btn', blocks.StructBlock([
-              ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-              ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
+            ('button', blocks.StructBlock([
+              ('btn', SnippetChooserBlock(Button))
             ]))
           ], icon='cogs'))
         ], icon='user')),
@@ -108,9 +134,8 @@ class HomePage(Page):
             ('img', ImageChooserBlock(required=False, classname="full")),
             ('lead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
             ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
-            ('btn', blocks.StructBlock([
-              ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-              ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
+            ('button', blocks.StructBlock([
+              ('btn', SnippetChooserBlock(Button))
             ]))
           ], icon='cogs'))
         ], icon='pick')),
@@ -120,9 +145,8 @@ class HomePage(Page):
             ('img', ImageChooserBlock(required=False, classname="full")),
             ('lead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
             ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
-            ('btn', blocks.StructBlock([
-              ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-              ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
+            ('button', blocks.StructBlock([
+              ('btn', SnippetChooserBlock(Button))
             ]))
           ], icon='cogs'))
         ], icon='snippet')),
@@ -132,9 +156,8 @@ class HomePage(Page):
             ('img', ImageChooserBlock(required=False, classname="full")),
             ('subhead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
             ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
-            ('btn', blocks.StructBlock([
-              ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-              ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
+            ('button', blocks.StructBlock([
+              ('btn', SnippetChooserBlock(Button))
             ]))
           ], icon='cogs'))
         ], icon='site')),
@@ -156,9 +179,8 @@ class HomePage(Page):
               ('img', ImageChooserBlock(required=False, classname="full")),
               ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
             ], icon='cogs')),
-            ('btn', blocks.StructBlock([
-             ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-             ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
+            ('button', blocks.StructBlock([
+              ('btn', SnippetChooserBlock(Button))
             ]))
           ], icon='cogs'))
         ], icon='site')),
@@ -169,9 +191,8 @@ class HomePage(Page):
               ('quote', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
             ], icon='doc-full'))
           ])),
-          ('btn', blocks.StructBlock([
-            ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-            ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
+          ('button', blocks.StructBlock([
+            ('btn', SnippetChooserBlock(Button))
           ]))
         ], icon='openquote')),
         ('s_reviews', blocks.StructBlock([
@@ -184,9 +205,8 @@ class HomePage(Page):
               ('title', blocks.CharBlock(blank=True, classname="full", icon='title'))
             ]))
           ])),
-          ('btn', blocks.StructBlock([
-                ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-                ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
+          ('button', blocks.StructBlock([
+            ('btn', SnippetChooserBlock(Button))
           ]))
         ], icon='form')),
         ('s_pricing', blocks.StructBlock([
@@ -197,9 +217,8 @@ class HomePage(Page):
               ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
               ('subhead', blocks.CharBlock(blank=True, classname="full", icon='title')),
               ('price', blocks.CharBlock(blank=True, classname="full", icon='title')),
-              ('btn', blocks.StructBlock([
-                ('btntext', blocks.CharBlock(blank=True, classname="full", icon='title')),
-                ('btnhref', blocks.CharBlock(blank=True, classname="full", icon='title'))
+              ('button', blocks.StructBlock([
+                ('btn', SnippetChooserBlock(Button))
               ]))
             ]))
             ]))

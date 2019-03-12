@@ -3,7 +3,7 @@ import graphene
 from django.db import models
 from graphene_django import DjangoObjectType
 from esite.home import graphene_wagtail
-from esite.home.models import HomePage, User
+from esite.home.models import HomePage, Button, User
 from graphene.types.generic import GenericScalar
 
 
@@ -25,6 +25,13 @@ class SectionBlock(graphene.ObjectType):
 class FooterBlock(graphene.ObjectType):
     value = GenericScalar()
 
+class ButtonBlock(graphene.ObjectType):
+    value = GenericScalar()
+    button = graphene.Field(UserNode)
+
+    def resolve_user(self, info):
+        return User.objects.get(id=self.value)
+
 class UserBlock(graphene.ObjectType):
     value = GenericScalar()
     user = graphene.Field(UserNode)
@@ -38,7 +45,7 @@ class UserBlock(graphene.ObjectType):
 # Objects
 class HomePageBody(graphene.Union):
     class Meta:
-        types = (HeaderBlock, SectionBlock, FooterBlock,UserBlock)
+        types = (HeaderBlock, SectionBlock, FooterBlock, ButtonBlock, UserBlock)
 
 class HomePageNode(DjangoObjectType):
     headers = graphene.List(HomePageBody)
@@ -75,6 +82,8 @@ class HomePageNode(DjangoObjectType):
                 repr_sections.append(HeaderBlock(value=value))
             elif block_type == 'f':
                 repr_sections.append(FooterBlock(value=value))
+            elif block_type == 'b':
+                repr_sections.append(ButtonBlock(value=value))
             elif block_type == 'u':
                 repr_sections.append(UserBlock(value=value))
         return repr_sections
@@ -90,6 +99,8 @@ class HomePageNode(DjangoObjectType):
                 repr_footers.append(HeaderBlock(value=value))
             elif block_type == 'f':
                 repr_footers.append(FooterBlock(value=value))
+            elif block_type == 'b':
+                repr_sections.append(ButtonBlock(value=value))
             elif block_type == 'u':
                 repr_footers.append(UserBlock(value=value))
         return repr_footers
