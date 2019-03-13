@@ -10,7 +10,10 @@ from .graphene_wagtail import DefaultStreamBlock, create_stream_field_type
 class UserNode(DjangoObjectType):
     class Meta:
         model = User
-
+        
+class ButtonNode(DjangoObjectType):
+    class Meta:
+        model = User
 
 # Blocks
 class HeaderBlock(DefaultStreamBlock):
@@ -24,7 +27,7 @@ class FooterBlock(DefaultStreamBlock):
 
 class ButtonBlock(graphene.ObjectType):
     value = GenericScalar()
-    button = graphene.Field(UserNode)
+    button = graphene.Field(ButtonNode)
 
     def resolve_user(self, info):
         return User.objects.get(id=self.value)
