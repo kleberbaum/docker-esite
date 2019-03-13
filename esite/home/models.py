@@ -165,31 +165,21 @@ class HomePage(Page):
         ('s_method', blocks.StructBlock([
           ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
           ('method', blocks.StructBlock([
-            ('img', ImageChooserBlock(required=False, classname="full")),
-            ('subhead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
-            ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
-            ('button', blocks.StructBlock([
-              ('btn', SnippetChooserBlock(Button))
-            ]))
-          ], icon='cogs'))
-        ], icon='site')),
-        ('s_method', blocks.StructBlock([
-          ('method', blocks.StructBlock([
             ('sphere_1', blocks.StructBlock([
-              ('img', ImageChooserBlock(required=False, classname="full")),
-              ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
+              ('step', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
+              ('link', blocks.CharBlock(classname="full"))
             ], icon='cogs')),
             ('sphere_2', blocks.StructBlock([
-              ('img', ImageChooserBlock(required=False, classname="full")),
-              ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
+              ('step', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
+              ('link', blocks.CharBlock(classname="full"))
             ], icon='cogs')),
             ('sphere_3', blocks.StructBlock([
-              ('img', ImageChooserBlock(required=False, classname="full")),
-              ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
+              ('step', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
+              ('link', blocks.CharBlock(classname="full"))
             ], icon='cogs')),
             ('sphere_4', blocks.StructBlock([
-              ('img', ImageChooserBlock(required=False, classname="full")),
-              ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
+              ('step', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
+              ('link', blocks.CharBlock(classname="full"))
             ], icon='cogs')),
             ('button', blocks.StructBlock([
               ('btn', SnippetChooserBlock(Button))
