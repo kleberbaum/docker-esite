@@ -163,8 +163,8 @@ class HomePage(Page):
           ], icon='cogs'))
         ], icon='snippet')),
         ('s_method', blocks.StructBlock([
+          ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
           ('method', blocks.StructBlock([
-            ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
             ('img', ImageChooserBlock(required=False, classname="full")),
             ('subhead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
             ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
@@ -208,9 +208,9 @@ class HomePage(Page):
           ]))
         ], icon='openquote')),
         ('s_reviews', blocks.StructBlock([
+          ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
           ('reviews', blocks.StreamBlock([
             ('slide', blocks.StructBlock([
-              ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
               ('img', ImageChooserBlock(required=False, classname="full")),
               ('quote', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
               ('name', blocks.CharBlock(blank=True, classname="full", icon='title')),
