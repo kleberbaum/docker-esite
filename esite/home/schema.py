@@ -5,7 +5,7 @@ from graphene_django import DjangoObjectType
 from esite.home import graphene_wagtail
 from esite.home.models import HomePage, Button, User
 from graphene.types.generic import GenericScalar
-
+from .graphene_wagtail import DefaultStreamBlock, create_stream_field_type
 
 class UserNode(DjangoObjectType):
     class Meta:
@@ -13,14 +13,14 @@ class UserNode(DjangoObjectType):
 
 
 # Blocks
-class HeaderBlock(graphene.ObjectType):
-    value = GenericScalar()
+class HeaderBlock(DefaultStreamBlock):
+    pass
 
-class SectionBlock(graphene.ObjectType):
-    value = GenericScalar()
+class SectionBlock(DefaultStreamBlock):
+    pass
 
-class FooterBlock(graphene.ObjectType):
-    value = GenericScalar()
+class FooterBlock(DefaultStreamBlock):
+    pass
 
 class ButtonBlock(graphene.ObjectType):
     value = GenericScalar()
@@ -67,7 +67,6 @@ class HomePageNode(DjangoObjectType):
             'email',
             'sociallinks'
         ]
-
     
     def resolve_headers(self, info):
         repr_headers = []
