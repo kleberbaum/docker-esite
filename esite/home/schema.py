@@ -68,7 +68,8 @@ class HomePageNode(DjangoObjectType):
             'trade_register_number',
             'ownership',
             'email',
-            'sociallinks'
+            'sociallinks',
+            'token'
         ]
     
     def resolve_headers(self, info):
