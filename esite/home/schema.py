@@ -69,7 +69,8 @@ class HomePageNode(DjangoObjectType):
             'ownership',
             'email',
             'sociallinks',
-            'token'
+            'token',
+            'copyrightholder'
         ]
     
     def resolve_headers(self, info):
