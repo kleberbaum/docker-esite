@@ -16,7 +16,7 @@ class ButtonNode(DjangoObjectType):
         model = User
 
 # Blocks
-class HeaderBlock(DefaultStreamBlock):
+class HeroBlock(DefaultStreamBlock):
     pass
 
 class SectionBlock(DefaultStreamBlock):
@@ -39,6 +39,17 @@ class UserBlock(graphene.ObjectType):
     def resolve_user(self, info):
         return User.objects.get(id=self.value)
 
+class HeaderNode(DjangoObjectType):
+
+    (hero, resolve_hero) = create_stream_field_type(
+            'hero',
+            hero=HeroBlock,
+            user=UserBlock,
+            btn=ButtonBlock)
+
+# Blocks
+class HeaderBlock(graphene.ObjectType):
+    value = graphene.Field(HeaderNode)
 
 # Objects
 class HomePageBody(graphene.Union):
@@ -47,11 +58,11 @@ class HomePageBody(graphene.Union):
 
 class HomePageNode(DjangoObjectType):
 
-    '''
+
     headers = graphene.List(HomePageBody)
     sections = graphene.List(HomePageBody)
     footers = graphene.List(HomePageBody)
-    '''
+
     
     class Meta:
         model = HomePage
@@ -76,7 +87,7 @@ class HomePageNode(DjangoObjectType):
             'copyrightholder'
         ]
 
-    '''
+
     def resolve_headers(self, info):
         repr_headers = []
         for block in self.headers.stream_data:
@@ -122,7 +133,7 @@ class HomePageNode(DjangoObjectType):
             headers=HeaderBlock,
             sections=SectionBlock,
             footers=FooterBlock)
-
+    '''
 # Query
 class Query(graphene.AbstractType):
     homepage = graphene.List(HomePageNode)
