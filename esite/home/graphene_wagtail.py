@@ -1,6 +1,7 @@
 # mysite/api/graphene_wagtail.py
 # Taken from https://github.com/patrick91/wagtail-ql/blob/master/backend/graphene_utils/converter.py and slightly adjusted
 
+import string
 import graphene
 from wagtail.core.fields import StreamField
 from graphene.types.generic import GenericScalar

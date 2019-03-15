@@ -46,10 +46,13 @@ class HomePageBody(graphene.Union):
         types = (HeaderBlock, SectionBlock, FooterBlock, ButtonBlock, UserBlock)
 
 class HomePageNode(DjangoObjectType):
+
+    '''
     headers = graphene.List(HomePageBody)
     sections = graphene.List(HomePageBody)
     footers = graphene.List(HomePageBody)
-
+    '''
+    
     class Meta:
         model = HomePage
         only_fields = [
@@ -72,7 +75,8 @@ class HomePageNode(DjangoObjectType):
             'token',
             'copyrightholder'
         ]
-    
+
+    '''
     def resolve_headers(self, info):
         repr_headers = []
         for block in self.headers.stream_data:
@@ -99,7 +103,25 @@ class HomePageNode(DjangoObjectType):
             if block_type == 'f':
                 repr_footers.append(FooterBlock(value=value))
         return repr_footers
+    '''
 
+    (headers, resolve_headers) = create_stream_field_type(
+            'headers',
+            headers=HeaderBlock,
+            sections=SectionBlock,
+            footers=FooterBlock)
+    
+    (sections, resolve_sections) = create_stream_field_type(
+            'sections',
+            paragraph=HeaderBlock,
+            sections=SectionBlock,
+            footers=FooterBlock)
+
+    (footers, resolve_footers) = create_stream_field_type(
+            'footers',
+            headers=HeaderBlock,
+            sections=SectionBlock,
+            footers=FooterBlock)
 
 # Query
 class Query(graphene.AbstractType):
