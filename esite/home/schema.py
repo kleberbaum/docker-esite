@@ -38,7 +38,7 @@ class UserBlock(graphene.ObjectType):
 
     def resolve_user(self, info):
         return User.objects.get(id=self.value)
-
+'''
 class HeaderNode(DjangoObjectType):
 
     (hero, resolve_hero) = create_stream_field_type(
@@ -46,10 +46,11 @@ class HeaderNode(DjangoObjectType):
             hero=HeroBlock,
             user=UserBlock,
             btn=ButtonBlock)
-
+'''
 # Blocks
 class HeaderBlock(graphene.ObjectType):
-    value = graphene.Field(HeaderNode)
+    pass
+    #value = graphene.Field(HeaderNode)
 
 # Objects
 class HomePageBody(graphene.Union):
