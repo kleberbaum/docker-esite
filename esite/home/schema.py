@@ -13,7 +13,7 @@ class UserNode(DjangoObjectType):
         
 class ButtonNode(DjangoObjectType):
     class Meta:
-        model = User
+        model = Button
 
 # Blocks
 class HeroBlock(DefaultStreamBlock):
@@ -38,17 +38,18 @@ class UserBlock(graphene.ObjectType):
 
     def resolve_user(self, info):
         return User.objects.get(id=self.value)
-'''
-class HeaderNode(DjangoObjectType):
 
-    (hero, resolve_hero) = create_stream_field_type(
-            'hero',
-            hero=HeroBlock,
-            user=UserBlock,
-            btn=ButtonBlock)
-'''
+#class HeaderNode(DjangoObjectType):
+#
+#    (hero, resolve_hero) = create_stream_field_type(
+#            'hero',
+#            hero=HeroBlock,
+#            user=UserBlock,
+#            btn=ButtonBlock)
+
 # Blocks
-class HeaderBlock(graphene.ObjectType):
+#class HeaderBlock(graphene.ObjectType):
+class HeaderBlock(DefaultStreamBlock):
     pass
     #value = graphene.Field(HeaderNode)
 
@@ -59,11 +60,9 @@ class HomePageBody(graphene.Union):
 
 class HomePageNode(DjangoObjectType):
 
-
     headers = graphene.List(HomePageBody)
     sections = graphene.List(HomePageBody)
     footers = graphene.List(HomePageBody)
-
     
     class Meta:
         model = HomePage
@@ -115,26 +114,25 @@ class HomePageNode(DjangoObjectType):
             if block_type == 'f':
                 repr_footers.append(FooterBlock(value=value))
         return repr_footers
-    '''
 
-    (headers, resolve_headers) = create_stream_field_type(
-            'headers',
-            headers=HeaderBlock,
-            sections=SectionBlock,
-            footers=FooterBlock)
-    
-    (sections, resolve_sections) = create_stream_field_type(
-            'sections',
-            paragraph=HeaderBlock,
-            sections=SectionBlock,
-            footers=FooterBlock)
+#    (headers, resolve_headers) = create_stream_field_type(
+#            'headers',
+#            headers=HeaderBlock,
+#            sections=SectionBlock,
+#            footers=FooterBlock)
+#    
+#    (sections, resolve_sections) = create_stream_field_type(
+#            'sections',
+#            paragraph=HeaderBlock,
+#            sections=SectionBlock,
+#            footers=FooterBlock)
+#
+#    (footers, resolve_footers) = create_stream_field_type(
+#            'footers',
+#            headers=HeaderBlock,
+#            sections=SectionBlock,
+#            footers=FooterBlock)
 
-    (footers, resolve_footers) = create_stream_field_type(
-            'footers',
-            headers=HeaderBlock,
-            sections=SectionBlock,
-            footers=FooterBlock)
-    '''
 # Query
 class Query(graphene.AbstractType):
     homepage = graphene.List(HomePageNode)
