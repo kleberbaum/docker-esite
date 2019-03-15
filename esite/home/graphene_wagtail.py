@@ -71,7 +71,7 @@ class WagtailImageNode(DjangoObjectType):
         exclude_fields = ['tags']
 
 @convert_django_field.register(Image)
-def convert_image(field, registry=None):
+def convert_img(field, registry=None):
     return WagtailImageNode(
         description=field.help_text, required=not field.null
     )
