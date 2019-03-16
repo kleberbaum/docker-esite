@@ -214,8 +214,7 @@ class HomePage(Page):
               ('card', blocks.StructBlock([
                 ('head', blocks.CharBlock(blank=True, classname="full title")),
                 ('description', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
-                ('price', blocks.CharBlock(blank=True, classname="full")),
-                ('leiden', blocks.DecimalBlock(blank=True, decimal_places=2)),
+                ('price', blocks.DecimalBlock(blank=True, decimal_places=2)),
                 ('button', blocks.StructBlock([
                   ('btn', SnippetChooserBlock(Button))
                 ]))
