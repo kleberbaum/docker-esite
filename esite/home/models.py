@@ -212,6 +212,7 @@ class HomePage(Page):
             ('head', blocks.CharBlock(blank=True, classname="full title")),
             ('cards', blocks.StreamBlock([
               ('card', blocks.StructBlock([
+                ('title', blocks.CharBlock(blank=True, classname="full title")),
                 ('description', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
                 ('price', blocks.DecimalBlock(blank=True, decimal_places=2)),
                 ('button', blocks.StructBlock([
