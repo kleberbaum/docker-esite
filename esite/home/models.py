@@ -40,7 +40,7 @@ class User(models.Model):
     infos = StreamField([
         ('infos', blocks.StructBlock([
             ('hauttyp', blocks.CharBlock()),
-            ('leiden', blocks.DecimalBlock()),
+            ('leiden', blocks.DecimalBlock(blank=True, decimal_places=2)),
             ('status', blocks.ChoiceBlock(choices=[
                 ('none', '(no unit)'),
                 ('Kunde', 'klein (>0)'),
@@ -98,7 +98,7 @@ class HomePage(Page):
           ('hero', blocks.StreamBlock([
             ('slide', blocks.StructBlock([
               ('img', ImageChooserBlock(required=False, classname="full")),
-              ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
+              ('head', blocks.CharBlock(blank=True, classname="full title")),
               ('subhead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
               ('button', blocks.StructBlock([
                 ('btn', SnippetChooserBlock(Button))
@@ -111,7 +111,7 @@ class HomePage(Page):
     sections = StreamField([
         ('s_why', blocks.StructBlock([
           ('why', blocks.StructBlock([
-            ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
+            ('head', blocks.CharBlock(blank=True, classname="full title")),
             ('collum_1', blocks.StructBlock([
               ('img', ImageChooserBlock(required=False, classname="full")),
               ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
@@ -131,7 +131,7 @@ class HomePage(Page):
         ], icon='group')),
         ('s_individual', blocks.StructBlock([
           ('individual', blocks.StructBlock([
-            ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
+            ('head', blocks.CharBlock(blank=True, classname="full title")),
             ('img', ImageChooserBlock(required=False, classname="full")),
             ('lead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
             ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
@@ -142,7 +142,7 @@ class HomePage(Page):
         ], icon='user')),
         ('s_experts', blocks.StructBlock([
           ('experts', blocks.StructBlock([
-            ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
+            ('head', blocks.CharBlock(blank=True, classname="full title")),
             ('img', ImageChooserBlock(required=False, classname="full")),
             ('lead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
             ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
@@ -153,7 +153,7 @@ class HomePage(Page):
         ], icon='pick')),
         ('s_lab', blocks.StructBlock([
           ('lab', blocks.StructBlock([
-            ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
+            ('head', blocks.CharBlock(blank=True, classname="full title")),('head', blocks.CharBlock(blank=True, classname="full title")),
             ('img', ImageChooserBlock(required=False, classname="full")),
             ('lead', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
             ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
@@ -163,23 +163,19 @@ class HomePage(Page):
           ], icon='cogs'))
         ], icon='snippet')),
         ('s_method', blocks.StructBlock([
-          ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
           ('method', blocks.StructBlock([
+            ('head', blocks.CharBlock(blank=True, classname="full title")),
             ('sphere_1', blocks.StructBlock([
-              ('step', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
-              ('link', blocks.CharBlock(classname="full"))
+              ('step', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
             ], icon='cogs')),
             ('sphere_2', blocks.StructBlock([
-              ('step', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
-              ('link', blocks.CharBlock(classname="full"))
+              ('step', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
             ], icon='cogs')),
             ('sphere_3', blocks.StructBlock([
-              ('step', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
-              ('link', blocks.CharBlock(classname="full"))
+              ('step', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
             ], icon='cogs')),
             ('sphere_4', blocks.StructBlock([
-              ('step', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
-              ('link', blocks.CharBlock(classname="full"))
+              ('step', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
             ], icon='cogs')),
             ('button', blocks.StructBlock([
               ('btn', SnippetChooserBlock(Button))
@@ -188,8 +184,8 @@ class HomePage(Page):
         ], icon='site')),
         ('s_quotes', blocks.StructBlock([
           ('quotes', blocks.StreamBlock([
-            ('slide', blocks.StructBlock([
-              ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
+            ('quote', blocks.StructBlock([
+              ('head', blocks.CharBlock(blank=True, classname="full title")),
               ('quote', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
             ], icon='doc-full'))
           ])),
@@ -198,13 +194,13 @@ class HomePage(Page):
           ]))
         ], icon='openquote')),
         ('s_reviews', blocks.StructBlock([
-          ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
+          ('head', blocks.CharBlock(blank=True, classname="full title")),
           ('reviews', blocks.StreamBlock([
-            ('slide', blocks.StructBlock([
+            ('review', blocks.StructBlock([
               ('img', ImageChooserBlock(required=False, classname="full")),
               ('quote', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
-              ('name', blocks.CharBlock(blank=True, classname="full", icon='title')),
-              ('title', blocks.CharBlock(blank=True, classname="full", icon='title'))
+              ('name', blocks.CharBlock(blank=True, classname="full")),
+              ('title', blocks.CharBlock(blank=True, classname="full"))
             ]))
           ])),
           ('button', blocks.StructBlock([
@@ -213,22 +209,23 @@ class HomePage(Page):
         ], icon='form')),
         ('s_pricing', blocks.StructBlock([
           ('pricing', blocks.StructBlock([
-            ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
+            ('head', blocks.CharBlock(blank=True, classname="full title")),
             ('cards', blocks.StreamBlock([
               ('card', blocks.StructBlock([
-              ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
-              ('subhead', blocks.CharBlock(blank=True, classname="full", icon='title')),
-              ('price', blocks.CharBlock(blank=True, classname="full", icon='title')),
-              ('button', blocks.StructBlock([
-                ('btn', SnippetChooserBlock(Button))
+                ('head', blocks.CharBlock(blank=True, classname="full title")),
+                ('description', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
+                ('price', blocks.CharBlock(blank=True, classname="full")),
+                ('leiden', blocks.DecimalBlock(blank=True, decimal_places=2)),
+                ('button', blocks.StructBlock([
+                  ('btn', SnippetChooserBlock(Button))
+                ]))
               ]))
-            ]))
             ]))
           ]))
         ], icon='home')),
         ('s_about', blocks.StructBlock([
           ('about', blocks.StructBlock([
-            ('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),('head', blocks.CharBlock(blank=True, classname="full title", icon='title')),
+            ('head', blocks.CharBlock(blank=True, classname="full title")),('head', blocks.CharBlock(blank=True, classname="full title")),
             ('img', ImageChooserBlock(required=False, classname="full")),
             ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
           ], icon='cogs'))
@@ -238,7 +235,7 @@ class HomePage(Page):
     footers = StreamField([
       ('f_info', blocks.StructBlock([
         ('info', blocks.StructBlock([
-          ('placeholder', blocks.CharBlock(blank=True, classname="full", icon='title'))
+          ('placeholder', blocks.CharBlock(blank=True, classname="full"))
         ]))
       ], icon='placeholder'))
     ])
