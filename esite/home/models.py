@@ -194,13 +194,15 @@ class HomePage(Page):
           ]))
         ], icon='openquote')),
         ('s_reviews', blocks.StructBlock([
-          ('reviews', blocks.StreamBlock([
+          ('reviews', blocks.StructBlock([
             ('head', blocks.CharBlock(blank=True, classname="full title")),
-            ('review', blocks.StructBlock([
-              ('img', ImageChooserBlock(required=False, classname="full")),
-              ('quote', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
-              ('name', blocks.CharBlock(blank=True, classname="full")),
-              ('info', blocks.CharBlock(blank=True, classname="full"))
+            ('user', blocks.StreamBlock([
+              ('review', blocks.StructBlock([
+                ('img', ImageChooserBlock(required=False, classname="full")),
+                ('quote', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
+                ('name', blocks.CharBlock(blank=True, classname="full")),
+                ('info', blocks.CharBlock(blank=True, classname="full"))
+              ]))
             ]))
           ])),
           ('button', blocks.StructBlock([
