@@ -84,7 +84,7 @@ class HomePage(Page):
 
     copyrightholder = models.CharField(max_length=255)
 
-    privacy = RichTextField(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
+    privacy = RichTextField(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'])
 
     sociallinks = StreamField([
       ('sociallinks', blocks.StreamBlock([
