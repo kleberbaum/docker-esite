@@ -278,7 +278,14 @@ class HomePage(Page):
         heading="legal",
         classname="collapsible collapsed"
       ),
-      StreamFieldPanel('sociallinks')
+      StreamFieldPanel('sociallinks'),
+      MultiFieldPanel(
+        [
+          FieldPanel('privacy')
+        ],
+        heading="legal",
+        classname="collapsible collapsed"
+      )
     ]
 
     token_panel = [
