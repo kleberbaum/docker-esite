@@ -42,9 +42,9 @@ class Why_CollumBlock(blocks.StructBlock):
 
 class _S_WhyBlock(blocks.StructBlock):
     why_head = blocks.CharBlock(blank=True, classname="full title")
-    why_collum_1 = Why_CollumBlock(icon='cogs')
-    why_collum_2 = Why_CollumBlock(icon='cogs')
-    why_collum_3 = Why_CollumBlock(icon='cogs')
+    why_collum1 = Why_CollumBlock(icon='cogs')
+    why_collum2 = Why_CollumBlock(icon='cogs')
+    why_collum3 = Why_CollumBlock(icon='cogs')
     why_button = SnippetChooserBlock(Button)
 
 class _S_IndividualBlock(blocks.StructBlock):
@@ -73,19 +73,19 @@ class Method_SphereBlock(blocks.StructBlock):
 
 class _S_MethodBlock(blocks.StructBlock):
     method_head = blocks.CharBlock(blank=True, classname="full title")
-    method_sphere_1 = Method_SphereBlock(icon='cogs')
-    method_sphere_2 = Method_SphereBlock(icon='cogs')
-    method_sphere_3 = Method_SphereBlock(icon='cogs')
-    method_sphere_4 = Method_SphereBlock(icon='cogs')
+    method_sphere1 = Method_SphereBlock(icon='cogs')
+    method_sphere2 = Method_SphereBlock(icon='cogs')
+    method_sphere3 = Method_SphereBlock(icon='cogs')
+    method_sphere4 = Method_SphereBlock(icon='cogs')
     method_button = SnippetChooserBlock(Button)
 
-class Service_ServiceBlock(blocks.StructBlock):
+class Services_ServiceBlock(blocks.StructBlock):
     service_head = blocks.CharBlock(blank=True, classname="full title")
     service_content = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
 
 class _S_ServicesBlock(blocks.StructBlock):
     services_services  = blocks.StreamBlock([
-      ('service', Quotes_QuoteBlock(icon='doc-full'))
+      ('service', Services_ServiceBlock(icon='doc-full'))
     ])
     services_button = SnippetChooserBlock(Button)
 
