@@ -30,7 +30,6 @@ INSTALLED_APPS = [
     'esite.aqms',
 
     'rest_framework',
-    'wagtail_graphql',
     'graphene_django',
     'corsheaders',
     'modelcluster',
@@ -113,13 +112,19 @@ DATABASES = {
 
 
 GRAPHENE = {
-    'SCHEMA': 'wagtail_graphql.api.schema.schema',
+    'SCHEMA': 'esite.api.schema.schema',
 }
 
 GRAPHQL_API = {
     'APPS': [
-        'esite.home'
-    ]
+        'home',
+    ],
+    'PREFIX': {
+    },
+    'URL_PREFIX': {
+
+    },
+    'RELAY': False,
 }
 
 # Password validation
