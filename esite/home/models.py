@@ -15,10 +15,10 @@ from modelcluster.fields import ParentalKey
 @register_snippet
 class Button(models.Model):
 
-    _title = models.CharField(max_length=255)
-    _id = models.CharField(blank=True, max_length=255)
-    _class = models.CharField(blank=True, max_length=255)
-    _link = models.CharField(blank=True, max_length=255)
+    button_title = models.CharField(max_length=255)
+    button_id = models.CharField(blank=True, max_length=255)
+    button_class = models.CharField(blank=True, max_length=255)
+    button_link = models.CharField(blank=True, max_length=255)
     
     panels = [
       FieldPanel('_title'),
