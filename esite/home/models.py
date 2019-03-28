@@ -29,82 +29,72 @@ class Button(models.Model):
 
     def __str__(self):
       return self._title
+
+
 class _H_HeroBlock(blocks.StructBlock):
     hero_img = ImageChooserBlock(required=False)
     hero_head = blocks.CharBlock(blank=True, classname="full title")
     hero_subhead = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
-    button = SnippetChooserBlock(Button)
+    hero_button = SnippetChooserBlock(Button)
+
+class Why_CollumBlock(blocks.StructBlock):
+    collum_img = ImageChooserBlock(required=False, classname="full")
+    collum_paragraph = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
 
 class _S_WhyBlock(blocks.StructBlock):
     why_head = blocks.CharBlock(blank=True, classname="full title")
-    why_collum_1 = blocks.StructBlock([
-      ('img', ImageChooserBlock(required=False, classname="full")),
-      ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
-    ], icon='cogs')
-    why_collum_2 = blocks.StructBlock([
-      ('img', ImageChooserBlock(required=False, classname="full")),
-      ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
-    ], icon='cogs')
-    why_collum_3 = blocks.StructBlock([
-      ('img', ImageChooserBlock(required=False, classname="full")),
-      ('paragraph', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
-    ], icon='cogs')
-    button = SnippetChooserBlock(Button)
+    why_collum_1 = Why_CollumBlock(icon='cogs')
+    why_collum_2 = Why_CollumBlock(icon='cogs')
+    why_collum_3 = Why_CollumBlock(icon='cogs')
+    why_button = SnippetChooserBlock(Button)
 
 class _S_IndividualBlock(blocks.StructBlock):
     individual_head = blocks.CharBlock(blank=True, classname="full title")
     individual_img = ImageChooserBlock(required=False, classname="full")
     individual_lead = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
     individual_paragraph = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
-    button = SnippetChooserBlock(Button)
+    individual_button = SnippetChooserBlock(Button)
 
 class _S_ExpertsBlock(blocks.StructBlock):
     experts_head = blocks.CharBlock(blank=True, classname="full title")
     experts_img = ImageChooserBlock(required=False, classname="full")
     experts_lead = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
     experts_paragraph = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
-    button = SnippetChooserBlock(Button)
+    experts_button = SnippetChooserBlock(Button)
 
 class _S_LabBlock(blocks.StructBlock):
     lab_head = blocks.CharBlock(blank=True, classname="full title")
     lab_img = ImageChooserBlock(required=False, classname="full")
     lab_lead = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
     lab_paragraph = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
-    button = SnippetChooserBlock(Button)
+    lab_button = SnippetChooserBlock(Button)
+
+class Method_SphereBlock(blocks.StructBlock):
+    sphere_step = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
 
 class _S_MethodBlock(blocks.StructBlock):
     method_head = blocks.CharBlock(blank=True, classname="full title")
-    method_sphere_1 = blocks.StructBlock([
-      ('step', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
-    ], icon='cogs')
-    method_sphere_2 = blocks.StructBlock([
-      ('step', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
-    ], icon='cogs')
-    method_sphere_3 = blocks.StructBlock([
-      ('step', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
-    ], icon='cogs')
-    method_sphere_4 = blocks.StructBlock([
-      ('step', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full"))
-    ], icon='cogs')
-    button = SnippetChooserBlock(Button)
+    method_sphere_1 = Method_SphereBlock(icon='cogs')
+    method_sphere_2 = Method_SphereBlock(icon='cogs')
+    method_sphere_3 = Method_SphereBlock(icon='cogs')
+    method_sphere_4 = Method_SphereBlock(icon='cogs')
+    method_button = SnippetChooserBlock(Button)
 
 class Quotes_QuoteBlock(blocks.StructBlock):
     quote_head = blocks.CharBlock(blank=True, classname="full title")
     quote_content = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
 
-class _S_QuotesBlock(blocks.StreamBlock):
-    reviews_reviews = blocks.StreamBlock([
+class _S_QuotesBlock(blocks.StructBlock):
+    quotes_quotes = blocks.StreamBlock([
       ('quotes', Quotes_QuoteBlock(icon='doc-full'))
     ])
-    button = SnippetChooserBlock(Button)
+    reviews_button = SnippetChooserBlock(Button)
 
 class Reviews_ReviewBlock(blocks.StructBlock):
-    review_content = blocks.StructBlock([
-      ('img', ImageChooserBlock(required=False, classname="full")),
-      ('quote', blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
-      ('name', blocks.CharBlock(blank=True, classname="full")),
-      ('info', blocks.CharBlock(blank=True, classname="full"))
-    ])
+    review_img = ImageChooserBlock(required=False, classname="full")
+    review_quote = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
+    review_name = blocks.CharBlock(blank=True, classname="full")
+    review_info = blocks.CharBlock(blank=True, classname="full")
 
 class _S_ReviewsBlock(blocks.StructBlock):
     reviews_head = blocks.CharBlock(blank=True, classname="full title")
@@ -112,21 +102,21 @@ class _S_ReviewsBlock(blocks.StructBlock):
       ('review', Reviews_ReviewBlock())
     ])
 
-class _S_PricingcardBlock(blocks.StructBlock):
-    title = blocks.CharBlock(blank=True, classname="full title")
-    description = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
-    price = blocks.DecimalBlock(blank=True, decimal_places=2)
-    button = SnippetChooserBlock(Button)
+class Pricing_PricingcardBlock(blocks.StructBlock):
+    pricingcard_title = blocks.CharBlock(blank=True, classname="full title")
+    pricingcard_description = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
+    pricingcard_price = blocks.DecimalBlock(blank=True, decimal_places=2)
+    pricingcard_button = SnippetChooserBlock(Button)
 
 class _S_PricingBlock(blocks.StructBlock):
     pricing_head = blocks.CharBlock(blank=True, classname="full title")
     pricing_pricingcards = blocks.StreamBlock([
-      ('pricingcard', _S_PricingcardBlock())
+      ('pricingcard', Pricing_PricingcardBlock())
     ], max_num=3)
 
 class _S_AboutBlock(blocks.StructBlock):
     about_img = ImageChooserBlock(required=False, classname="full")
-    abouthead = blocks.CharBlock(blank=True, classname="full title")
+    about_head = blocks.CharBlock(blank=True, classname="full title")
     about_paragraph = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
 
 class _F_InfoBlock(blocks.StructBlock):
@@ -235,7 +225,7 @@ class UniquePage(Page):
       ObjectList(Page.promote_panels + token_panel + Page.settings_panels, heading='Settings', classname="settings")
     ])
 
-class UserField(AbstractFormField):
+class FormField(AbstractFormField):
     page = ParentalKey('FormPage', on_delete=models.CASCADE, related_name='form_fields')
 
 
