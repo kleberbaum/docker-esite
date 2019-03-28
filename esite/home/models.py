@@ -20,14 +20,14 @@ class Button(models.Model):
     button_link = models.CharField(blank=True, max_length=255)
     
     panels = [
-      FieldPanel('_title'),
-      FieldPanel('_id'),
-      FieldPanel('_class'),
-      FieldPanel('_link'),   
+      FieldPanel('button_title'),
+      FieldPanel('button_id'),
+      FieldPanel('button_class'),
+      FieldPanel('button_link'),   
     ]
 
     def __str__(self):
-      return self._title
+      return self.button_title
 
 
 class _H_HeroBlock(blocks.StructBlock):
