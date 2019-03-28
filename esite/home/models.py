@@ -159,7 +159,7 @@ class UniquePage(Page):
       ('s_experts', _S_ExpertsBlock(icon='pick')),
       ('s_lab', _S_LabBlock(icon='snippet')),
       ('s_method', _S_MethodBlock(icon='site')),
-      ('s_quotes', _S_QuotesBlock( icon='openquote')),
+      ('s_services', _S_ServicesBlock( icon='openquote')),
       ('s_reviews', _S_ReviewsBlock(icon='form')),
       ('s_pricing', _S_PricingBlock(icon='home')),
       ('s_about', _S_AboutBlock(icon='home'))
