@@ -6,3 +6,4 @@ Pillow==4.0.0
 graphene-django==2.2
 graphene_django_optimizer==0.3.6
 django-cors-headers==2.4.0
+wagtail-graphql==0.3.0
