@@ -93,7 +93,9 @@ class Quotes_QuoteBlock(blocks.StructBlock):
     quote_content = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
 
 class _S_QuotesBlock(blocks.StreamBlock):
-    quotes_quote = Quotes_QuoteBlock(icon='doc-full')
+    reviews_reviews = blocks.StreamBlock([
+      ('quotes', Quotes_QuoteBlock(icon='doc-full'))
+    ])
     button = SnippetChooserBlock(Button)
 
 class Reviews_ReviewBlock(blocks.StructBlock):
@@ -109,7 +111,6 @@ class _S_ReviewsBlock(blocks.StructBlock):
     reviews_reviews = blocks.StreamBlock([
       ('review', Reviews_ReviewBlock())
     ])
-    button = SnippetChooserBlock(Button)
 
 class _S_PricingcardBlock(blocks.StreamBlock):
     title = blocks.CharBlock(blank=True, classname="full title")
