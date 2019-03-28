@@ -23,7 +23,7 @@ class Button(models.Model):
       FieldPanel('button_title'),
       FieldPanel('button_id'),
       FieldPanel('button_class'),
-      FieldPanel('button_link'),   
+      FieldPanel('button_link'),    
     ]
 
     def __str__(self):
@@ -79,15 +79,15 @@ class _S_MethodBlock(blocks.StructBlock):
     method_sphere_4 = Method_SphereBlock(icon='cogs')
     method_button = SnippetChooserBlock(Button)
 
-class Quotes_QuoteBlock(blocks.StructBlock):
-    quote_head = blocks.CharBlock(blank=True, classname="full title")
-    quote_content = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
+class Service_ServiceBlock(blocks.StructBlock):
+    service_head = blocks.CharBlock(blank=True, classname="full title")
+    service_content = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
 
-class _S_QuotesBlock(blocks.StructBlock):
-    quotes_quotes = blocks.StreamBlock([
-      ('quotes', Quotes_QuoteBlock(icon='doc-full'))
+class _S_ServicesBlock(blocks.StructBlock):
+    services_services  = blocks.StreamBlock([
+      ('service', Quotes_QuoteBlock(icon='doc-full'))
     ])
-    reviews_button = SnippetChooserBlock(Button)
+    services_button = SnippetChooserBlock(Button)
 
 class Reviews_ReviewBlock(blocks.StructBlock):
     review_image = ImageChooserBlock(required=False, classname="full")
@@ -189,7 +189,6 @@ class UniquePage(Page):
           FieldPanel('copyrightholder')
         ],
         heading="contact",
-        classname="collapsible collapsed"
       ),
       MultiFieldPanel(
         [
@@ -202,15 +201,13 @@ class UniquePage(Page):
           FieldPanel('ownership')
         ],
         heading="legal",
-        classname="collapsible collapsed"
       ),
       StreamFieldPanel('sociallinks'),
       MultiFieldPanel(
         [
           FieldPanel('privacy')
         ],
-        heading="legal",
-        classname="collapsible collapsed"
+        heading="privacy",
       )
     ]
 
@@ -232,6 +229,6 @@ class FormPage(AbstractForm):
     thank_you_text = models.TextField(blank=True)
 
     content_panels = AbstractForm.content_panels + [
-        FieldPanel('thank_you_text', classname="full"),
-        InlinePanel('form_fields', label="Form fields"),
+      FieldPanel('thank_you_text', classname="full"),
+      InlinePanel('form_fields', label="Form fields"),
     ]
