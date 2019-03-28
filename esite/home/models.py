@@ -14,7 +14,6 @@ from modelcluster.fields import ParentalKey
 
 @register_snippet
 class Button(models.Model):
-
     button_title = models.CharField(max_length=255)
     button_id = models.CharField(blank=True, max_length=255)
     button_class = models.CharField(blank=True, max_length=255)
@@ -32,13 +31,13 @@ class Button(models.Model):
 
 
 class _H_HeroBlock(blocks.StructBlock):
-    hero_img = ImageChooserBlock(required=False)
+    hero_image = ImageChooserBlock(required=False)
     hero_head = blocks.CharBlock(blank=True, classname="full title")
     hero_subhead = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
     hero_button = SnippetChooserBlock(Button)
 
 class Why_CollumBlock(blocks.StructBlock):
-    collum_img = ImageChooserBlock(required=False, classname="full")
+    collum_image = ImageChooserBlock(required=False, classname="full")
     collum_paragraph = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
 
 class _S_WhyBlock(blocks.StructBlock):
@@ -50,21 +49,21 @@ class _S_WhyBlock(blocks.StructBlock):
 
 class _S_IndividualBlock(blocks.StructBlock):
     individual_head = blocks.CharBlock(blank=True, classname="full title")
-    individual_img = ImageChooserBlock(required=False, classname="full")
+    individual_image = ImageChooserBlock(required=False, classname="full")
     individual_lead = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
     individual_paragraph = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
     individual_button = SnippetChooserBlock(Button)
 
 class _S_ExpertsBlock(blocks.StructBlock):
     experts_head = blocks.CharBlock(blank=True, classname="full title")
-    experts_img = ImageChooserBlock(required=False, classname="full")
+    experts_image = ImageChooserBlock(required=False, classname="full")
     experts_lead = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
     experts_paragraph = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
     experts_button = SnippetChooserBlock(Button)
 
 class _S_LabBlock(blocks.StructBlock):
     lab_head = blocks.CharBlock(blank=True, classname="full title")
-    lab_img = ImageChooserBlock(required=False, classname="full")
+    lab_image = ImageChooserBlock(required=False, classname="full")
     lab_lead = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
     lab_paragraph = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
     lab_button = SnippetChooserBlock(Button)
@@ -91,7 +90,7 @@ class _S_QuotesBlock(blocks.StructBlock):
     reviews_button = SnippetChooserBlock(Button)
 
 class Reviews_ReviewBlock(blocks.StructBlock):
-    review_img = ImageChooserBlock(required=False, classname="full")
+    review_image = ImageChooserBlock(required=False, classname="full")
     review_quote = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
     review_name = blocks.CharBlock(blank=True, classname="full")
     review_info = blocks.CharBlock(blank=True, classname="full")
@@ -115,7 +114,7 @@ class _S_PricingBlock(blocks.StructBlock):
     ], max_num=3)
 
 class _S_AboutBlock(blocks.StructBlock):
-    about_img = ImageChooserBlock(required=False, classname="full")
+    about_image = ImageChooserBlock(required=False, classname="full")
     about_head = blocks.CharBlock(blank=True, classname="full title")
     about_paragraph = blocks.RichTextBlock(blank=True, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
 
