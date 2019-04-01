@@ -2,10 +2,11 @@ from django.db import models
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
 from wagtail.core import blocks
-from wagtail.admin.edit_handlers import TabbedInterface, ObjectList, InlinePanel, StreamFieldPanel, MultiFieldPanel, FieldPanel
+from wagtail.admin.edit_handlers import PageChooserPanel, TabbedInterface, ObjectList, InlinePanel, StreamFieldPanel, MultiFieldPanel, FieldPanel
 from wagtail.images.blocks import ImageChooserBlock
-from wagtail.snippets.blocks import SnippetChooserBlock
 from wagtail.snippets.models import register_snippet
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.snippets.blocks import SnippetChooserBlock
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.contrib.forms.models import AbstractForm, AbstractFormField
@@ -15,17 +16,25 @@ from modelcluster.fields import ParentalKey
 @register_snippet
 class Button(models.Model):
     button_title = models.CharField(null=True, blank=False, max_length=255)
+
     button_id = models.CharField(null=True, blank=True, max_length=255)
     button_class = models.CharField(null=True, blank=True, max_length=255)
-    button_link = blocks.URLBlock(null=True, blank=True)
-    button_page = blocks.PageChooserBlock(null=True, blank=True)
+
+    button_link = models.URLField(null=True, blank=True)
+    button_page = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+    )
     
     panels = [
       FieldPanel('button_title'),
       FieldPanel('button_id'),
       FieldPanel('button_class'),
       FieldPanel('button_link'),
-      FieldPanel('button_page')
+      PageChooserPanel('button_page')
     ]
 
     def __str__(self):
@@ -235,16 +244,34 @@ class FormPage(AbstractForm):
     registration_newsletter_text = models.CharField(null=True, blank=False, max_length=255)
     registration_privacy_text = RichTextField(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'])
     registration_info_text = RichTextField(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'])
+    registration_button = models.ForeignKey(
+        'home.Button',
+        null=True,
+        blank=False,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
 
     registration_step_text = RichTextField(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'])
     thank_you_text = RichTextField(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'])
 
     content_panels = AbstractForm.content_panels + [
-      FieldPanel('registration_head', classname="full title"),
-      FieldPanel('registration_newsletter_text', classname="full"),
-      FieldPanel('registration_privacy_text', classname="full"),
-      FieldPanel('registration_info_text', classname="full"),
-      FieldPanel('registration_step_text', classname="full"),
-      FieldPanel('thank_you_text', classname="full"),
-      InlinePanel('form_fields', label="Form fields")
+      MultiFieldPanel(
+        [
+          FieldPanel('registration_head', classname="full title"),
+          FieldPanel('registration_newsletter_text', classname="full"),
+          FieldPanel('registration_privacy_text', classname="full"),
+          FieldPanel('registration_info_text', classname="full"),
+          FieldPanel('registration_step_text', classname="full"),
+          SnippetChooserPanel('registration_button', classname="full"),
+          FieldPanel('thank_you_text', classname="full")
+        ],
+        heading="content",
+      ),
+      MultiFieldPanel(
+        [
+          InlinePanel('form_fields', label="Form fields")
+        ],
+        heading="data",
+      )
     ]
