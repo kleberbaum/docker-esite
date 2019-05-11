@@ -14,6 +14,8 @@ from graphene_django.views import GraphQLView
 from django.views.decorators.csrf import csrf_exempt
 from graphene_django.views import GraphQLView
 
+from wagtail.images.views.serve import ServeView
+
 urlpatterns = [
     #url(r'^django-admin/', admin.site.urls),
 
@@ -57,4 +59,5 @@ urlpatterns += [
 urlpatterns += [
     url(r'^api/graphql', csrf_exempt(GraphQLView.as_view())),
     url(r'^api/graphiql', csrf_exempt(GraphQLView.as_view(graphiql=True, pretty=True))),
+    url(r'^images/([^/]*)/(\d*)/([^/]*)/[^/]*$', ServeView.as_view(), name='wagtailimages_serve'),
 ]

@@ -110,8 +110,21 @@ DATABASES = {
     }
 }
 
+
 GRAPHENE = {
     'SCHEMA': 'esite.api.schema.schema',
+}
+
+GRAPHQL_API = {
+    'APPS': [
+        'home',
+    ],
+    'PREFIX': {
+    },
+    'URL_PREFIX': {
+
+    },
+    'RELAY': False,
 }
 
 # Password validation
