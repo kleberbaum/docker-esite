@@ -119,17 +119,20 @@ class Facebook_PostBlock(blocks.StructBlock):
     facebook_url = blocks.URLBlock(null=True, blank=False, classname="full")
 
 class _S_FacebookBlock(blocks.StructBlock):
+    facebook_head = blocks.CharBlock(null=True, blank=False, classname="full title")
     facebook_urls = blocks.StreamBlock([
       ('facebook', Facebook_PostBlock(null=True, blank=False))
-    ], null=True, blank=False)
+    ], null=True, blank=False, max_num=3)
 
 class Instagram_PostBlock(blocks.StructBlock):
     instagram_url = blocks.URLBlock(null=True, blank=False, classname="full")
 
 class _S_InstagramBlock(blocks.StructBlock):
+    instagram_head = blocks.CharBlock(null=True, blank=False, classname="full title")
+    instagram_captions = blocks.BooleanBlock(null=True, blank=True, help_text="Activate to show texts and hashtags of the given Instagram post on the website.")
     instagram_urls = blocks.StreamBlock([
       ('instagram',Instagram_PostBlock(null=True, blank=False))
-    ], null=True, blank=False)
+    ], null=True, blank=False, max_num=3)
 
 class Pricing_PricingcardBlock(blocks.StructBlock):
     pricingcard_title = blocks.CharBlock(null=True, blank=False, classname="full title")
