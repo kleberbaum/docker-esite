@@ -42,7 +42,7 @@ class Button(models.Model):
 
 class Hero_SlideBlock(blocks.StructBlock):
     slide_head = blocks.CharBlock(null=True, blank=False, classname="full title")
-    slide_subhead = blocks.RichTextBlock(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
+    slide_subhead = blocks.RichTextBlock(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'ol', 'ul', 'hr', 'embed', 'link', 'superscript', 'subscript', 'document-link', 'image', 'code'], classname="full")
     slide_image = ImageChooserBlock(null=True, blank=False)
     slide_button = SnippetChooserBlock(Button)
 
@@ -52,7 +52,7 @@ class  _H_HeroBlock(blocks.ListBlock):
     
 class Why_CollumBlock(blocks.StructBlock):
     collum_image = ImageChooserBlock(null=True, blank=False)
-    collum_paragraph = blocks.RichTextBlock(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
+    collum_paragraph = blocks.RichTextBlock(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'ol', 'ul', 'hr', 'embed', 'link', 'superscript', 'subscript', 'document-link', 'image', 'code'], classname="full")
 
 class _S_WhyBlock(blocks.StructBlock):
     why_head = blocks.CharBlock(null=True, blank=False, classname="full title")
@@ -64,26 +64,26 @@ class _S_WhyBlock(blocks.StructBlock):
 class _S_IndividualBlock(blocks.StructBlock):
     individual_head = blocks.CharBlock(null=True, blank=False, classname="full title")
     individual_image = ImageChooserBlock(null=True, blank=False)
-    individual_lead = blocks.RichTextBlock(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
-    individual_paragraph = blocks.RichTextBlock(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
+    individual_lead = blocks.RichTextBlock(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'ol', 'ul', 'hr', 'embed', 'link', 'superscript', 'subscript', 'document-link', 'image', 'code'], classname="full")
+    individual_paragraph = blocks.RichTextBlock(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'ol', 'ul', 'hr', 'embed', 'link', 'superscript', 'subscript', 'document-link', 'image', 'code'], classname="full")
     individual_button = SnippetChooserBlock(Button)
 
 class _S_ExpertsBlock(blocks.StructBlock):
     experts_head = blocks.CharBlock(null=True, blank=False, classname="full title")
     experts_image = ImageChooserBlock(null=True, blank=False)
-    experts_lead = blocks.RichTextBlock(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
-    experts_paragraph = blocks.RichTextBlock(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
+    experts_lead = blocks.RichTextBlock(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'ol', 'ul', 'hr', 'embed', 'link', 'superscript', 'subscript', 'document-link', 'image', 'code'], classname="full")
+    experts_paragraph = blocks.RichTextBlock(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'ol', 'ul', 'hr', 'embed', 'link', 'superscript', 'subscript', 'document-link', 'image', 'code'], classname="full")
     experts_button = SnippetChooserBlock(Button)
 
 class _S_LabBlock(blocks.StructBlock):
     lab_head = blocks.CharBlock(null=True, blank=False, classname="full title")
     lab_image = ImageChooserBlock(null=True, blank=False)
-    lab_lead = blocks.RichTextBlock(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
-    lab_paragraph = blocks.RichTextBlock(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
+    lab_lead = blocks.RichTextBlock(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'ol', 'ul', 'hr', 'embed', 'link', 'superscript', 'subscript', 'document-link', 'image', 'code'], classname="full")
+    lab_paragraph = blocks.RichTextBlock(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'ol', 'ul', 'hr', 'embed', 'link', 'superscript', 'subscript', 'document-link', 'image', 'code'], classname="full")
     lab_button = SnippetChooserBlock(Button)
 
 class Method_SphereBlock(blocks.StructBlock):
-    sphere_step = blocks.RichTextBlock(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
+    sphere_step = blocks.RichTextBlock(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'ol', 'ul', 'hr', 'embed', 'link', 'superscript', 'subscript', 'document-link', 'image', 'code'], classname="full")
 
 class _S_MethodBlock(blocks.StructBlock):
     method_head = blocks.CharBlock(null=True, blank=False, classname="full title")
@@ -105,7 +105,7 @@ class _S_ServicesBlock(blocks.StructBlock):
 
 class Reviews_ReviewBlock(blocks.StructBlock):
     review_image = ImageChooserBlock(null=True, blank=False)
-    review_quote = blocks.RichTextBlock(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
+    review_quote = blocks.RichTextBlock(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'ol', 'ul', 'hr', 'embed', 'link', 'superscript', 'subscript', 'document-link', 'image', 'code'], classname="full")
     review_name = blocks.CharBlock(null=True, blank=False, classname="full")
     review_info = blocks.CharBlock(null=True, blank=False, classname="full")
 
@@ -114,10 +114,26 @@ class _S_ReviewsBlock(blocks.StructBlock):
     reviews_reviews = blocks.StreamBlock([
       ('review', Reviews_ReviewBlock(null=True, blank=False))
     ], null=True, blank=False)
-    
+
+class Facebook_PostBlock(blocks.StructBlock):
+    facebook_url = blocks.URLBlock(null=True, blank=False, classname="full")
+
+class _S_FacebookBlock(blocks.StructBlock):
+    facebook_urls = blocks.StreamBlock([
+      ('facebook', Facebook_PostBlock(null=True, blank=False))
+    ], null=True, blank=False)
+
+class Instagram_PostBlock(blocks.StructBlock):
+    instagram_url = blocks.URLBlock(null=True, blank=False, classname="full")
+
+class _S_InstagramBlock(blocks.StructBlock):
+    instagram_urls = blocks.StreamBlock([
+      ('instagram',Instagram_PostBlock(null=True, blank=False))
+    ], null=True, blank=False)
+
 class Pricing_PricingcardBlock(blocks.StructBlock):
     pricingcard_title = blocks.CharBlock(null=True, blank=False, classname="full title")
-    pricingcard_description = blocks.RichTextBlock(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
+    pricingcard_description = blocks.RichTextBlock(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'ol', 'ul', 'hr', 'embed', 'link', 'superscript', 'subscript', 'document-link', 'image', 'code'], classname="full")
     pricingcard_price = blocks.DecimalBlock(null=True, blank=False, decimal_places=2)
     pricingcard_button = SnippetChooserBlock(Button)
 
@@ -130,7 +146,7 @@ class _S_PricingBlock(blocks.StructBlock):
 class _S_AboutBlock(blocks.StructBlock):
     about_image = ImageChooserBlock(null=True, blank=False)
     about_head = blocks.CharBlock(null=True, blank=False, classname="full title")
-    about_paragraph = blocks.RichTextBlock(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")
+    about_paragraph = blocks.RichTextBlock(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'ol', 'ul', 'hr', 'embed', 'link', 'superscript', 'subscript', 'document-link', 'image', 'code'], classname="full")
 
 class _F_InfoBlock(blocks.StructBlock):
     info_placeholder = blocks.CharBlock(null=True, blank=False, classname="full")
@@ -154,7 +170,7 @@ class UniquePage(Page):
 
     copyrightholder = models.CharField(null=True, blank=False, max_length=255)
 
-    privacy = RichTextField(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'])
+    privacy = RichTextField(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'ol', 'ul', 'hr', 'embed', 'link', 'superscript', 'subscript', 'document-link', 'image', 'code'])
 
     sociallinks = StreamField([
       ('link', blocks.URLBlock())
@@ -173,6 +189,8 @@ class UniquePage(Page):
       ('s_method', _S_MethodBlock(null=True, blank=False, icon='site')),
       ('s_services', _S_ServicesBlock(null=True, blank=False, icon='openquote')),
       ('s_reviews', _S_ReviewsBlock(null=True, blank=False, icon='form')),
+      ('s_facebook', _S_FacebookBlock(null=True, blank=False, icon='form')),
+      ('s_instagram', _S_InstagramBlock(null=True, blank=False, icon='form')),
       ('s_pricing', _S_PricingBlock(null=True, blank=False, icon='home')),
       ('s_about', _S_AboutBlock(null=True, blank=False, icon='fa-quote-left')),
       ('code', blocks.RawHTMLBlock(null=True, blank=True, classname="full", icon='code'))
@@ -242,8 +260,8 @@ class FormField(AbstractFormField):
 class FormPage(AbstractForm):
     registration_head = models.CharField(null=True, blank=False, max_length=255)
     registration_newsletter_text = models.CharField(null=True, blank=False, max_length=255)
-    registration_privacy_text = RichTextField(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'])
-    registration_info_text = RichTextField(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'])
+    registration_privacy_text = RichTextField(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'ol', 'ul', 'hr', 'embed', 'link', 'superscript', 'subscript', 'document-link', 'image', 'code'])
+    registration_info_text = RichTextField(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'ol', 'ul', 'hr', 'embed', 'link', 'superscript', 'subscript', 'document-link', 'image', 'code'])
     registration_button = models.ForeignKey(
         'home.Button',
         null=True,
@@ -252,8 +270,8 @@ class FormPage(AbstractForm):
         related_name='+'
     )
 
-    registration_step_text = RichTextField(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'])
-    thank_you_text = RichTextField(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'])
+    registration_step_text = RichTextField(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'ol', 'ul', 'hr', 'embed', 'link', 'superscript', 'subscript', 'document-link', 'image', 'code'])
+    thank_you_text = RichTextField(null=True, blank=False, features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'ol', 'ul', 'hr', 'embed', 'link', 'superscript', 'subscript', 'document-link', 'image', 'code'])
 
     content_panels = AbstractForm.content_panels + [
       MultiFieldPanel(
