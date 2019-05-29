@@ -129,7 +129,7 @@ class Instagram_PostBlock(blocks.StructBlock):
 
 class _S_InstagramBlock(blocks.StructBlock):
     instagram_head = blocks.CharBlock(null=True, blank=False, classname="full title")
-    instagram_captions = blocks.BooleanBlock(null=True, blank=True, help_text="Activate to show texts and hashtags of the given Instagram post on the website.")
+    instagram_captions = blocks.BooleanBlock(null=True, blank=True, required=False, help_text="Activate to show texts and hashtags of the given Instagram post on the website.")
     instagram_urls = blocks.StreamBlock([
       ('instagram',Instagram_PostBlock(null=True, blank=False))
     ], null=True, blank=False, max_num=3)
