@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'esite.search',
     'esite.api',
     'esite.aqms',
+    'esite.colorfield',
 
     'rest_framework',
     'graphene_django',
