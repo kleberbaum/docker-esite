@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'wagtail.admin',
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.routable_page',
+    'wagtail.contrib.styleguide',
     'wagtail.core',
 
     'django.contrib.admin',
