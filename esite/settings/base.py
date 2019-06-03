@@ -24,6 +24,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
+    'esite.core',
     'esite.home',
     'esite.search',
     'esite.api',
