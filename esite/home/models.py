@@ -218,8 +218,8 @@ class UniquePage(Page):
       ('s_method', _S_MethodBlock(null=True, blank=False, icon='site')),
       ('s_services', _S_ServicesBlock(null=True, blank=False, icon='openquote')),
       ('s_reviews', _S_ReviewsBlock(null=True, blank=False, icon='form')),
-      ('s_facebook', _S_FacebookBlock(null=True, blank=False, icon='form')),
-      ('s_instagram', _S_InstagramBlock(null=True, blank=False, icon='form')),
+      ('s_facebook', _S_FacebookBlock(null=True, blank=False, icon='fa-facebook-official')),
+      ('s_instagram', _S_InstagramBlock(null=True, blank=False, icon='fa-instagram')),
       ('s_pricing', _S_PricingBlock(null=True, blank=False, icon='home')),
       ('s_about', _S_AboutBlock(null=True, blank=False, icon='fa-quote-left')),
       ('code', blocks.RawHTMLBlock(null=True, blank=True, classname="full", icon='code'))
