@@ -220,3 +220,8 @@ li.sequence-member:hover {
 .dropdown ul a:hover {
   background-color: #2a3c4a;
 }
+
+.icon-bin {
+  background-color: #cd3238;
+  border: 1px solid #cd3238;
+}
